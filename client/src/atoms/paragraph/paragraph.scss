@@ -1,0 +1,10 @@
+.mp-a-paragraph {
+    padding: 0 1rem 1rem;
+    font-size: 1rem;
+    p {
+        margin: 0;
+    }
+    &--lightgrey {
+        color: #adadad;
+    }
+}

@@ -1,0 +1,25 @@
+.mp-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media (min-width: 48em) {
+      padding-right: 4rem;
+    }
+  }
+
+  &__body {
+    width: 100%;
+  }
+
+  @media (min-width: 48em) {
+    flex-direction: row;
+    padding: 5rem 7rem;
+  }
+}
