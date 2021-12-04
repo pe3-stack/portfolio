@@ -7,4 +7,9 @@
     &--lightgrey {
         color: #adadad;
     }
+    &--small {
+        p {
+            font-size: 1rem;
+        }
+    }
 }

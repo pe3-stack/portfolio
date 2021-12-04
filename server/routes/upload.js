@@ -1,6 +1,6 @@
-const upload = require("../middleware/upload");
-const express = require("express");
-const router = express.Router();
+const upload = require("../middleware/upload"),
+ express = require("express"),
+ router = express.Router();
 
 
 //@route GET /
@@ -16,7 +16,7 @@ router.get('/',(req, res) => {
     })
 });
 
-//@route GET /image>filename
+//@route GET /image:filename
 //@desc Display Image 
 router.get('/:filename',(req, res) => {
     gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
@@ -26,9 +26,13 @@ router.get('/:filename',(req, res) => {
             })
         }
 
-        if(file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === '"application/pdf') {
+            res.setHeader('Content-Type', file.contentType);
+            res.setHeader('Content-Length', file.length);
             const readstream = gfs.createReadStream(file.filename);
+            
             readstream.pipe(res);
+            
         } else {
             res.status(404).json({
                 err: "Not an image"

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Paragraph from "../../atoms/paragraph/paragraph";
 
 import "./accordion.scss";
 
@@ -10,38 +11,52 @@ const Accordion = ({ title, contentArr }) => {
   const [over, setOver] = useState(false);
 
   const experience = contentArr.map((c) => {
-    console.log(c);
     return (
       <div
-        className={`mp-accordion-item__content ${isActive ? "-expanded" : ""}`}
+        className={`mp-accordion-item__wrapper ${isActive ? "-expanded" : ""}`}
       >
-        <div className="mp-accordion-item__content--title">{c.company}</div>
-        <div className="mp-accordion-item__content--paragraph">{c.role}</div>
-        <div className="mp-accordion-item__content--paragraph">{c.period}</div>
-        <div className="mp-accordion-item__content--text-small">{c.place}</div>
-        <div className="mp-accordion-item__content--text">{c.text}</div>
-      </div>)
-  })
+        <div className="mp-accordion-item__content">
+         
+          <div className="mp-accordion-item__content--job">
+            <div className="mp-accordion-item__icon">
+              <img src={c.icon} alt="" />
+            </div>
+
+            <div className="mp-accordion-item__content--info">
+              <h3>{c.company}</h3>
+              <Paragraph>{c.role}</Paragraph>
+              <Paragraph size="small">{c.period}</Paragraph>
+              <Paragraph color="lightgrey">{c.place}</Paragraph>
+            </div>
+          </div>
+
+          <ul className="mp-accordion-item__content--skills">
+            <li>HTML / CSS / SCSS</li>
+          </ul>
+        </div>
+      </div>
+    );
+  });
 
   return (
-    <div className="mp-accordion-item">
-      <div
+    <li className="mp-accordion-item">
+      <h3
         className="mp-accordion-item__title"
         onClick={() => setIsActive(!isActive)}
         onMouseOver={() => setOver(true)}
         onMouseLeave={() => setOver(false)}
       >
         <div>{title}</div>
-        <div className="mp-accordion-item__title--icon" >
+        <div className="mp-accordion-item__title--icon">
           <FontAwesomeIcon
             icon={isActive ? faChevronUp : faChevronDown}
             size="lg"
-            color={over ? 'black' : 'lightgrey'}
+            color={over ? "black" : "lightgrey"}
           />
         </div>
-      </div>
-      { experience }
-    </div>
+      </h3>
+      {experience}
+    </li>
   );
 };
 

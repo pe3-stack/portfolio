@@ -4,7 +4,6 @@ import SideDrawer from "./components/navbar/navbar";
 import Navbar from "./components/navbar/navbar";
 import Main from "./containers/Main/main";
 
-import Accordion from "./components/accordion/accordion";
 
 import "./App.css";
 
@@ -14,7 +13,7 @@ import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import {  getExperience } from "./redux/reducers/experienceSlice";
+//import {  getExperience } from "./redux/reducers/experienceSlice";
 import {  getWeather } from "./redux/reducers/weatherSlice";
  
 library.add(fab, faCheckSquare, faCoffee);
@@ -26,7 +25,7 @@ function App() {
   }, [setShowSideDrawer]);
 
   const dispatch = useDispatch();
-  const experience = useSelector(state => state.experience);
+  
   const weather = useSelector(state => state.weather);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ function App() {
     
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options)
 
-    dispatch(getExperience());
+    //dispatch(getExperience());
   }, [dispatch]);
 
   console.log(weather)
@@ -75,22 +74,23 @@ function App() {
   }
 
 
-  let accordion =  experience.loading === 'loaded' ? experience.categories.map((i) => {
-    return (
-      <div className="mp-accordion">
-      <Accordion
-        key={i._id}
-        title={i.title}
-        contentArr={i.data}
-      />  </div>
-    );
-    }) : <div className={experience.error ? 'mp-accordion-status mp-accordion-status--error-data' : 'mp-accordion-status mp-accordion-status--loading-data'}>no data due to<br></br> <span>{experience.error ? experience.error : 'loading...'}</span></div>;
+  // let accordion =  experience.loading === 'loaded' ? experience.categories.map((i) => {
+  //   return (
+  //     <div className="mp-accordion">
+  //     <Accordion
+  //       key={i._id}
+  //       title={i.title}
+  //       contentArr={i.data}
+  //     />  </div>
+  //   );
+  //   }) : <div className={experience.error ? 'mp-accordion-status mp-accordion-status--error-data' : 'mp-accordion-status mp-accordion-status--loading-data'}>no data due to<br></br> <span>{experience.error ? experience.error : 'loading...'}</span></div>;
   return (
     <div className="App">
       <Navbar onToggleClick={toggleSideDrawer} icon={wth_icon} temp={(curr_temp -  273.15).toFixed(0)} city={city}/>
       {sideDrawer}
+      
       <Main />     
-     {accordion} 
+     {/* {accordion}  */}
     </div>
   );
 }
