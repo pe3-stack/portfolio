@@ -10,7 +10,7 @@ export const getExperience = createAsyncThunk(
         const response = await axios.get("http://localhost:8080/info");
         return response.data;
     }
-)
+);
 
 // ACCORDION EXPERIENCE
 const experienceSlice = createSlice({
@@ -35,7 +35,7 @@ const experienceSlice = createSlice({
         state.error = action.error.message;
       }
     },
-  });
+});
   
 
   export default experienceSlice.reducer;

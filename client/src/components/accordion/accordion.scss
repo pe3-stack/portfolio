@@ -1,10 +1,11 @@
 .mp-accordion {
-  padding: 0 2rem 1rem;
+  padding: 0 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
   background-color: white;
+  list-style: none;
 
   &-item {
     border-bottom: 1px solid #bbbbbb;
@@ -12,33 +13,72 @@
       border-bottom: 1px solid #000;
     }
 
-    &__title {
-      position: relative;
+    &__wrapper {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
-      padding: 1rem 0;
-      cursor: pointer;
-      font-weight: 600;
-      &:hover {
-        color: #000;
-      }
-    }
-    &__content {
       max-height: 0;
       transition: all 0.5s;
       opacity: 0;
       visibility: hidden;
-      &--title {
-        font-size: 1.2rem;
-        font-weight: 500;
-      }
+      
       &--text {
         padding: 1rem 0;
         &-small {
           color: #666666;
           font-size: 0.8rem;
         }
+      }
+
+    }
+
+    &__title {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      font-weight: 600;
+      font-size: 1.6rem;
+      justify-content: space-between;
+      position: relative;
+      padding: 1rem 0 3rem 0;
+      
+      &:hover {
+        color: #000;
+      }
+    }
+    
+
+    &__icon {
+      padding: 0.5rem 2rem 0 0;
+
+      img {
+        width: 50px;  
+      }
+
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 15%;
+
+      @media (min-width: 48em) {
+        flex-direction: row;
+        width: 100%;
+      } 
+
+      &--job {  
+        display: flex;
+        justify-content: row;
+        min-width: 320px;
+
+         h3 {
+           font-size: 1.4rem;
+           font-weight: 600;
+           margin: 0;
+         }
+      }
+
+      &--skills {
+        border-left: 1px solid black;
       }
 
     }
