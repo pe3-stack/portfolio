@@ -21,7 +21,6 @@ app.use(function (req, res, next) {
 app.use(helmet());
 
 
-
 //Import Routes
 const infoRoute = require('./routes/infos');
 // Welcome message
