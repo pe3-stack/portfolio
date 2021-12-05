@@ -52,6 +52,12 @@ function Main() {
         <div className="mp-main__left">
         
           <div className="mp-main__header">
+            
+          </div>
+
+          <div className="mp-main__footer">
+            
+          </div>
           <ul>
             <li className="mp-main_item">
               <h2>Contact</h2>
@@ -67,13 +73,8 @@ function Main() {
               <h2>Contact</h2>
               <p>pe3.gavrila@gmail.com</p>
             </li>
+            <li><Button href="http://localhost:8080/files/1638627991282-icon-CV-Razvan-Gavrila.pdf">Download CV</Button></li>
           </ul>
-          </div>
-
-          <div className="mp-main__footer">
-          <Button href="http://localhost:8080/files/1638627991282-icon-CV-Razvan-Gavrila.pdf">Download CV</Button>
-          </div>
-         
 
           
         </div>
