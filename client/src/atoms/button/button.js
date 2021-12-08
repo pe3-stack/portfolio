@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useRef} from "react";
 
 import './button.scss'
 
+
 const Button = ({href, children}) => {
+
+    
+const rzvCta = useRef();
+    
     return (
-    <div>
-        <a className="rgp-atm-button" href={href} target="_blank" rel="noreferrer">{children}</a>
-    </div>)
+        <a className="rzv-a-cta" href={href} target="_blank" rel="noreferrer" ref={rzvCta}>{children}</a>
+   )
 }
 
 

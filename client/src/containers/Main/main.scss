@@ -15,20 +15,23 @@
   &__left {
     color: #fff;
     height: 100vh;
-    flex-basis: 35%;
+    flex-basis: 30%;
+    background-color: black;
     flex-direction: column;
     height: auto;
     z-index: 1;
 
     @media (min-width: 48em) {
       height: 100vh;
+      background-color: transparent;
     }
 
     ul {
       list-style: none;
       text-align: left;
       margin: 0;
-      padding: 2rem 0 1rem calc(100vw / 18);
+      padding: 2rem 2rem 1rem calc(100vw / 18);
+      width: auto;
       z-index: 5;
       
       @media (min-width: 48em) {
@@ -38,12 +41,20 @@
       .mp-main_item {
         display: flex;
         flex-direction: column;
-        margin: 2rem 0 4rem 0;
+        margin: 0 0 2rem 0;
 
         h2 {
           border-bottom: 1px solid #fff;
           padding-bottom: 6px;
           width: max-content;
+        }
+
+        .rzv-a-cta {
+          color: #fff;
+
+          &:hover {
+            color: #000;
+          }
         }
 
         a {
@@ -53,23 +64,6 @@
         }
       }
 
-      li {
-        .rgp-atm-button {
-          padding: .5rem 2rem;
-          color: #fff;
-          border: 1px solid #fff;
-          border-radius: 2px;
-          text-align: center;
-          background: #000;
-          text-decoration: none;
-
-          &:hover {
-            background: #fff;
-            border: 1px solid #000;
-            color: #000;
-          }
-      }
-      }
     }
   }
   // White side on left

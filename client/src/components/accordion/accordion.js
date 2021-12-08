@@ -17,22 +17,26 @@ const Accordion = ({ title, contentArr }) => {
       >
         <div className="mp-accordion-item__content">
          
-          <div className="mp-accordion-item__content--job">
-            <div className="mp-accordion-item__icon">
-              <img src={c.icon} alt="" />
-            </div>
+          <div className="mp-accordion-item__content">
+            <div className="mp-accordion-item__job">
+              <div className="mp-accordion-item__icon">
+                <img src={c.icon} alt="" />
+              </div>
 
-            <div className="mp-accordion-item__content--info">
-              <h3>{c.company}</h3>
-              <Paragraph>{c.role}</Paragraph>
-              <Paragraph size="small">{c.period}</Paragraph>
-              <Paragraph color="lightgrey">{c.place}</Paragraph>
+              <div className="mp-accordion-item__content--info">
+                <h3>{c.company}</h3>
+                <Paragraph>{c.role}</Paragraph>
+                <Paragraph size="small">{c.period}</Paragraph>
+                <Paragraph color="lightgrey">{c.place}</Paragraph>
+              </div>
             </div>
+            
+            <ul className="mp-accordion-item__content--skills">
+              <li>HTML / CSS / SCSS</li>
+            </ul>
+
           </div>
-
-          <ul className="mp-accordion-item__content--skills">
-            <li>HTML / CSS / SCSS</li>
-          </ul>
+      
         </div>
       </div>
     );

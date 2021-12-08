@@ -4,7 +4,7 @@ import './paragraph.scss'
 
 const Paragraph = ({children, color, size}) => {
     return (
-    <div className={`mp-a-paragraph mp-a-paragraph--${color} mp-a-paragraph--${size}`}>
+    <div className={`rzv-atm-paragraph rzv-atm-paragraph--${color} rzv-atm-paragraph--${size}`}>
         <p> {children} </p>
     </div>)
 }

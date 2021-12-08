@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,19 +12,33 @@ import Info from "../../components/info/info";
 import CanvasParticle from "../../atoms/canvas/canvas";
 
 import Accordion from "../../components/accordion/accordion";
-
+import FloatCTA from "../../components/float-cta/float-cta";
 import { getExperience } from "../../redux/reducers/experienceSlice";
 
 function Main() {
   const dispatch = useDispatch();
+  const [isMobile, setIsMobile] = useState(false);
   const experience = useSelector((state) => state.experience);
+  
+  const handleWindowResize = () => {
+    const resolution = window.innerWidth;
+    const isMobile = resolution >= 320 && resolution <= 768;
+    const isTablet = resolution >= 768 && resolution <= 1024;
+    const isDesktop = !isMobile && !isTablet;
+
+    setIsMobile(isMobile);
+  };
 
   useEffect(() => {
     dispatch(getExperience());
+    handleWindowResize();
+    window.onresize = () => {
+      handleWindowResize();
+    };
   }, [dispatch]);
 
-  let accordion =
-    experience.loading === "loaded" ? (
+
+  let accordion = experience.loading === "loaded" ? (
       experience.categories.map((i) => {
         return (
           <ul className="mp-accordion">
@@ -47,12 +61,13 @@ function Main() {
 
   return (
     <div className="mp-main">
+      {isMobile ? <FloatCTA/> : null}
+      
       <div className="mp-main__wrapper">
       <CanvasParticle/>
         <div className="mp-main__left">
         
           <div className="mp-main__header">
-            
           </div>
 
           <div className="mp-main__footer">
@@ -73,12 +88,14 @@ function Main() {
               <h2>Contact</h2>
               <p>pe3.gavrila@gmail.com</p>
             </li>
-            <li><Button href="http://localhost:8080/files/1638627991282-icon-CV-Razvan-Gavrila.pdf">Download CV</Button></li>
+            <li class="mp-main_item">
+              <Button href="http://localhost:8080/files/1638627991282-icon-CV-Razvan-Gavrila.pdf">Download CV</Button>
+            </li>
           </ul>
 
           
         </div>
-
+        
         <div className="mp-main__right">
           <div className="mp-main__header">
             <div className="mp-main__header_title">
