@@ -17,6 +17,7 @@
     height: 100vh;
     flex-basis: 30%;
     background-color: black;
+
     flex-direction: column;
     height: auto;
     z-index: 1;
@@ -24,6 +25,7 @@
     @media (min-width: 48em) {
       height: 100vh;
       background-color: transparent;
+
     }
 
     ul {
@@ -32,6 +34,7 @@
       margin: 0;
       padding: 2rem 2rem 1rem calc(100vw / 18);
       width: auto;
+
       z-index: 5;
       
       @media (min-width: 48em) {
@@ -63,6 +66,7 @@
           margin-top: 20px;
         }
       }
+
 
     }
   }

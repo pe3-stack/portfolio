@@ -16,7 +16,7 @@ const Accordion = ({ title, contentArr }) => {
         className={`mp-accordion-item__wrapper ${isActive ? "-expanded" : ""}`}
       >
         <div className="mp-accordion-item__content">
-         
+
           <div className="mp-accordion-item__content">
             <div className="mp-accordion-item__job">
               <div className="mp-accordion-item__icon">
@@ -36,7 +36,7 @@ const Accordion = ({ title, contentArr }) => {
             </ul>
 
           </div>
-      
+
         </div>
       </div>
     );

@@ -40,6 +40,7 @@
       justify-content: space-between;
       position: relative;
       padding: 1rem 0 0rem 0;
+
       
       &:hover {
         color: #000;
@@ -55,19 +56,20 @@
         @media (min-width: 48em) {
         width: 50px;
         }
+
       }
 
     }
     &__content {
       display: flex;
       flex-direction: row;
-
+      
       @media (min-width: 48em) {
         flex-direction: row;
         width: 100%;
       } 
 
-      
+
 
       &--skills {
         border-left: 1px solid black;
