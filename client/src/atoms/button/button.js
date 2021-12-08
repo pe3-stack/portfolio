@@ -1,3 +1,4 @@
+
 import React, {useRef} from "react";
 
 import './button.scss'
@@ -12,6 +13,5 @@ const rzvCta = useRef();
         <a className="rzv-a-cta" href={href} target="_blank" rel="noreferrer" ref={rzvCta}>{children}</a>
    )
 }
-
 
 export default Button;

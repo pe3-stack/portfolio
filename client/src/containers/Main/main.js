@@ -116,7 +116,7 @@ function Main() {
             </div>
           </div>
           <div className="mp-main__body">
-            <Info />
+            <Info /
             {accordion}
           </div>
         </div>
@@ -126,3 +126,4 @@ function Main() {
 }
 
 export default Main;
+

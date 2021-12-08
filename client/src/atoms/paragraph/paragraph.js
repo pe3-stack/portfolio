@@ -1,3 +1,4 @@
+
 import React from "react";
 
 import './paragraph.scss'
@@ -8,6 +9,5 @@ const Paragraph = ({children, color, size}) => {
         <p> {children} </p>
     </div>)
 }
-
 
 export default Paragraph;
