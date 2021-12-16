@@ -1,0 +1,124 @@
+.mp-main {
+  &__wrapper {
+    padding: 3rem 0 0 0;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #fff;
+    @media (min-width: 48em) {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  // Black side on left
+  &__left {
+    color: #fff;
+    height: 100vh;
+    flex-basis: 35%;
+    background-color: black;
+    flex-direction: column;
+    height: auto;
+    z-index: 1;
+
+    @media (min-width: 48em) {
+      height: 100vh;
+      background-color: transparent;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      text-align: left;
+      margin: 0;
+      padding: 2rem 2rem 1rem 2rem;
+      width: auto;
+      z-index: 5;
+     
+      @media (min-width: 46em) {
+        position: fixed;
+      }
+      @media (min-width: 64em) {
+       
+        padding:4rem 2rem 1rem 2rem;
+        width: calc(100% /3.5);
+        height: 85%;
+        justify-content: space-between;
+      }
+
+      .mp-main_item {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 2rem 0;
+
+        h2 {
+          border-bottom: 1px solid #fff;
+          padding-bottom: 6px;
+          width: max-content;
+        }
+
+        .rzv-a-cta {
+          color: #fff;
+
+           @media (min-width: 90em) {
+            width: 50%;
+           }
+
+          &:hover {
+            color: #000;
+          }
+        }
+
+        a {
+          color: grey;
+          text-decoration: none;
+          margin-top: 20px;
+        }
+      }
+
+    }
+  }
+  // White side on left
+  &__right {
+    display: flex;
+    flex-basis: 60%;
+    flex-direction: column;
+    padding: 2rem 2rem;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (min-width: 48em) {
+      flex-direction: row;
+      justify-content: space-around;
+      padding-right: 4rem;
+    }
+
+    &_title {
+      text-align: center;
+
+      @media (min-width: 48em) {
+        flex-basis: 50%;
+        text-align: left;
+        .mpa-title {
+          padding: 2rem 0 0;
+        }
+      }
+    }
+    &_image {
+      flex-basis: 50%;
+    }
+  }
+
+  &__body {
+    width: 100%;
+  }
+
+  @media (min-width: 48em) {
+    flex-direction: row;
+  }
+}

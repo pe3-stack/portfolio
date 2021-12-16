@@ -1,0 +1,19 @@
+.rzv-a {
+    &-cta {
+        padding: .5rem 2rem;
+        color: #fff;
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+        font-weight: 400;
+        text-align: center;
+        background: transparent;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          background: #fff;
+          border: 1px solid #000;
+          color: #000;
+        }
+    }
+}

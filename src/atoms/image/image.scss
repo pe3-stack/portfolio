@@ -1,0 +1,21 @@
+.mp-a-image {
+  padding: 20px 0;
+  box-sizing: border-box;
+  background-clip: content-box;
+  border-radius: 49.9%;
+  filter: grayscale(5);
+
+  &:hover {
+    filter: none;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+
+    @media (min-width: 46em) {
+      width: 180px;
+      height: 180px;
+    }
+    border-radius: 50%;
+  }
+}

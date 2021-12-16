@@ -1,0 +1,32 @@
+.mp-navbar {
+  z-index: 3;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  margin-right: 2rem;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    height: 50px;
+    border-bottom: 2px solid #fff;
+    padding: 0 1rem;
+    @media screen and (min-width: 48em) {
+      padding: 0 2rem;
+    }
+  }
+  &__items {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    flex-basis: 33.33%;
+  }
+
+  &__social {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    flex-basis: 33.33%;
+  }
+}

@@ -1,0 +1,32 @@
+
+
+.c-navigation__item {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 30px;
+  width: 100px;
+  align-items: center;
+  border-right: 1px solid white;
+  &:hover {
+    text-decoration: none;
+    a {
+      color: #c7c7c7;
+      text-decoration: none;
+    }
+  }
+  a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    width: 100%;
+    padding: 2% 5%;
+    border-bottom: solid transparent;
+
+    box-sizing: border-box;
+    display: block;
+  }
+  &:last-of-type {
+    border-right: none;
+  }
+}

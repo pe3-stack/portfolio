@@ -1,0 +1,14 @@
+.rzv-atm-paragraph {
+    font-size: 1rem;
+    p {
+        margin: 0;
+    }
+    &--lightgrey {
+        color: #adadad;
+    }
+    &--small {
+        p {
+            font-size: 1rem;
+        }
+    }
+}
