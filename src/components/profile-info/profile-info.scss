@@ -1,0 +1,31 @@
+.rzv-profile-info {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 46em) {
+        justify-content: flex-start;
+    }
+
+    &__wr {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 1rem 0;
+    }
+
+    &__item {
+        display: flex;
+        color: #969696;
+        flex-direction: row;
+        font-size: .8rem;
+        font-weight: 500;
+        list-style: none;
+        padding-top: .5rem;
+  
+        
+        p:first-of-type {
+            padding-right: .8rem;
+            min-width: 5rem;
+            text-align: left;
+        }
+    }
+}
