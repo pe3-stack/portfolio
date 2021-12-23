@@ -6,9 +6,9 @@ import "./logo.scss";
 
 const Logo = ({children}) => {
   return (
-    <div className="mp-logo">
+    <a className="mp-logo" href="">
       <p className="mp-logo__paragraph">{children}</p>
-    </div>
+    </a>
   );
 };
 

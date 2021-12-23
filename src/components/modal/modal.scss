@@ -1,0 +1,29 @@
+.rzv-modal {
+  display: flex;
+  justify-content: center;
+  
+  &__overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.6;
+    z-index: 100;
+  }
+
+  &__wr {
+    background-color: #fff;
+    margin-top: 5rem;
+    width: calc(100vw * 3 / 3.5);
+    min-height: 10rem;
+    top: 0;
+    z-index: 105;
+    position: fixed;
+
+    @media (min-width: 46em) {
+        width: calc(100vw * 3 / 7);
+    }
+  }
+}

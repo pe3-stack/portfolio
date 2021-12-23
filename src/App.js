@@ -1,9 +1,12 @@
 import React, { useState, useCallback, useEffect } from "react";
 
+
 import SideDrawer from "./components/navbar/navbar";
 import Navbar from "./components/navbar/navbar";
+import Modal from "./components/modal/modal";
 import Main from "./containers/Main/main";
 
+import SignUp from "./components/Authentication/SignUp/sign-up";
 
 import "./App.css";
 
@@ -14,22 +17,21 @@ import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 
 //import {  getExperience } from "./redux/reducers/experienceSlice";
-import {  getWeather } from "./redux/reducers/weatherSlice";
- 
+import { getWeather } from "./redux/reducers/weatherSlice";
+
 library.add(fab, faCheckSquare, faCoffee);
 
-function App() {
+const App = () => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
   const toggleSideDrawer = useCallback(() => {
     setShowSideDrawer((value) => !value);
   }, [setShowSideDrawer]);
 
   const dispatch = useDispatch();
-  
-  const weather = useSelector(state => state.weather);
+
+  const weather = useSelector((state) => state.weather);
 
   useEffect(() => {
-              
     let userLocation = [];
 
     const options = {
@@ -38,22 +40,19 @@ function App() {
     };
     const geoSuccess = (position) => {
       userLocation = [position.coords.latitude, position.coords.longitude];
-      console.log('geolocation available')
-      
+      console.log("geolocation available");
+
       dispatch(getWeather(userLocation));
-      
     };
     const geoError = (error) => {
-      console.log('geolocation unavailable')
+      console.log("geolocation unavailable");
       return error.message;
     };
-    
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options)
+
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
 
     //dispatch(getExperience());
   }, [dispatch]);
-
-  console.log(weather)
 
   let sideDrawer;
   if (showSideDrawer) {
@@ -67,32 +66,29 @@ function App() {
   }
 
   let curr_temp, wth_icon, city;
-  if(weather.data.current !== undefined) {
+  if (weather.data.current !== undefined) {
     wth_icon = weather.data.current.weather[0].icon;
     curr_temp = weather.data.current.temp;
     city = weather.data.timezone.slice(7);
   }
 
-
-  // let accordion =  experience.loading === 'loaded' ? experience.categories.map((i) => {
-  //   return (
-  //     <div className="mp-accordion">
-  //     <Accordion
-  //       key={i._id}
-  //       title={i.title}
-  //       contentArr={i.data}
-  //     />  </div>
-  //   );
-  //   }) : <div className={experience.error ? 'mp-accordion-status mp-accordion-status--error-data' : 'mp-accordion-status mp-accordion-status--loading-data'}>no data due to<br></br> <span>{experience.error ? experience.error : 'loading...'}</span></div>;
   return (
     <div className="App">
-      <Navbar onToggleClick={toggleSideDrawer} icon={wth_icon} temp={(curr_temp -  273.15).toFixed(0)} city={city}/>
+      <Navbar
+        onToggleClick={toggleSideDrawer}
+        icon={wth_icon}
+        temp={(curr_temp - 273.15).toFixed(0)}
+        city={city}
+      />
       {sideDrawer}
-      
-      <Main />     
-     {/* {accordion}  */}
+
+      <Main />
+
+      <Modal>
+        <SignUp/>
+      </Modal>
     </div>
   );
-}
+};
 
 export default App;

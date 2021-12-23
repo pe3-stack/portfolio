@@ -90,18 +90,16 @@
     padding: 2rem 2rem;
 
     @media (min-width: 90em) {
-      padding: 0 calc(100% / 8);
+      padding: 2rem calc(100% / 8);
     }
   }
 
   &__header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
 
     @media (min-width: 48em) {
-      flex-direction: row;
-      justify-content: space-around;
       padding-right: 4rem;
     }
 
