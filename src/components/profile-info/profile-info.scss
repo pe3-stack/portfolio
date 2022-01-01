@@ -19,13 +19,16 @@
         font-size: .8rem;
         font-weight: 500;
         list-style: none;
-        padding-top: .5rem;
+        padding-top: .3rem;
   
-        
         p:first-of-type {
             padding-right: .8rem;
             min-width: 5rem;
             text-align: left;
+        }
+
+        @media (min-width: 46em) {
+            padding-top: .5rem;
         }
     }
 }

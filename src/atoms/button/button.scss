@@ -1,6 +1,6 @@
 .rzv-a {
     &-cta {
-        padding: .5rem 2rem;
+        padding: .5rem;
         color: #fff;
         border: 1px solid #ffffff;
         border-radius: 2px;
@@ -14,6 +14,11 @@
           background: #fff;
           border: 1px solid #000;
           color: #000;
+        }
+        
+        &--dark {
+          background-color: #000;
+          color: #fff;
         }
     }
 }

@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Accordion = ({ title, contentArr }) => {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [over, setOver] = useState(false);
 
 
-  const experience = contentArr.map((c) => {
+  const experience = contentArr.map((c, idx) => {
 
     return (
       <div
+      key={idx}
         className={`rzv-accordion-item__wrapper ${isActive ? "-expanded" : ""}`}
       >
         <div>     
@@ -32,9 +33,9 @@ const Accordion = ({ title, contentArr }) => {
               </div>
             </div>
             
-            <ul class="rzv-accordion-item__skills">
+            <ul className="rzv-accordion-item__skills">
               {c.skills ? c.skills.map(skill => {
-                return <li class="rzv-accordion-item__skill" key={skill}><p dangerouslySetInnerHTML={{__html: skill}}></p></li>
+                return <li className="rzv-accordion-item__skill" key={skill}><p dangerouslySetInnerHTML={{__html: skill}}></p></li>
               }) : null}
             </ul>
 

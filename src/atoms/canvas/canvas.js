@@ -1,17 +1,16 @@
 import Particles from "react-tsparticles";
 
-
 import "./canvas.scss";
 
-const Canvas = () => {
+const CanvasParticle = () => {
   const particlesInit = (main) => {
-    console.log(main);
+    // console.log(main);
 
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
   };
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    // console.log(container);
   };
   return (
       <div>
@@ -96,4 +95,4 @@ const Canvas = () => {
   );
 };
 
-export default Canvas;
+export default CanvasParticle;

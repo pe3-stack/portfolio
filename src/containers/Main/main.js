@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./main.scss";
@@ -14,8 +13,6 @@ import ProfileInfo from "../../components/profile-info/profile-info";
 import CanvasParticle from "../../atoms/canvas/canvas";
 
 import Accordion from "../../components/accordion/accordion";
-
-import FloatCTA from "../../components/float-cta/float-cta";
 
 import { getContact } from "../../redux/reducers/contactSlice";
 import { getExperience } from "../../redux/reducers/experienceSlice";
@@ -49,25 +46,29 @@ i18n
 
 function Main() {
   const dispatch = useDispatch();
+
   let lang = document.querySelector("html").lang;
-  const [isMobile, setIsMobile] = useState(false);
+  
+  // const [isMobile, setIsMobile] = useState(false);
   const contact = useSelector((state) => state.contact);
   const experience = useSelector((state) => state.experience);
   const { t } = useTranslation();
 
   const handleWindowResize = () => {
-    const resolution = window.innerWidth;
-    const isMobile = resolution >= 320 && resolution <= 768;
-    const isTablet = resolution >= 768 && resolution <= 1024;
-    const isDesktop = !isMobile && !isTablet;
+    // const resolution = window.innerWidth;
+    // const isMobile = resolution >= 320 && resolution <= 768;
+    // const isTablet = resolution >= 768 && resolution <= 1024;
+    // const isDesktop = !isMobile && !isTablet;
 
-    setIsMobile(isMobile);
+    // setIsMobile(isMobile);
   };
 
   useEffect(() => {
+
     dispatch(getContact());
     dispatch(getExperience());
     handleWindowResize();
+
     window.onresize = () => {
       handleWindowResize();
     };
@@ -76,10 +77,10 @@ function Main() {
   let accordion =
     experience.loading === "loaded" ? (
       experience.categories.map((i, idx) => {
-        let accordion = i[lang].map((c) => {
-          return <Accordion key={c._id} title={c.title} contentArr={c.data} />;
+        let accordion = i[lang].map((c, idx) => {
+          return <Accordion key={idx} title={c.title} contentArr={c.data} />;
         });
-        return <ul className="rzv-accordion">{accordion}</ul>;
+        return <ul key={idx} className="rzv-accordion">{accordion}</ul>;
       })
     ) : (
       <div
@@ -96,9 +97,9 @@ function Main() {
     );
 
   // contact - info
-  let contact_info = contact.profiles.map((c) => {
+  let contact_info = contact.profiles.map((c, idx) => {
     return (
-      <div className="mp-main__header">
+      <div key={idx} className="mp-main__header">
         <div className="mp-main__header_title">
           <Title>{c.profile.name}</Title>
           <Paragraph color="lightgrey">{c.profile.job}</Paragraph>
@@ -115,7 +116,7 @@ function Main() {
 
   return (
     <div className="mp-main">
-      {isMobile ? <FloatCTA /> : null}
+      {/* {isMobile ? <FloatCTA /> : null} */}
 
       <div className="mp-main__wrapper">
         <CanvasParticle />

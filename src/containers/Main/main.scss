@@ -1,3 +1,5 @@
+
+
 .mp-main {
   &__wrapper {
     padding: 3rem 0 0 0;
@@ -87,11 +89,8 @@
     display: flex;
     flex-basis: 60%;
     flex-direction: column;
-    padding: 2rem 2rem;
+    padding: 2rem calc(100% / 12);
 
-    @media (min-width: 90em) {
-      padding: 2rem calc(100% / 8);
-    }
   }
 
   &__header {
@@ -104,7 +103,7 @@
     }
 
     &_title {
-      text-align: center;
+      text-align: left;
 
       @media (min-width: 48em) {
         flex-basis: 50%;

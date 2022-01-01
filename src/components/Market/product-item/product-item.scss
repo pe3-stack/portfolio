@@ -1,0 +1,26 @@
+.rzv-product-item {
+    padding-top: 1rem;
+    &__wr {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .rzv-a-cta--dark {
+            margin: 0 .5rem;
+            a {
+                color:#fff;
+                text-decoration: none;
+            }
+            &:hover {
+                a {
+                    color: #000;
+                } 
+            }
+        }
+    }
+}

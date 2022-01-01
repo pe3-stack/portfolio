@@ -1,0 +1,39 @@
+.rzv-input {
+  margin: 0.5rem 0 0 0;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-label {
+    position: relative;
+    top: 1.8rem;
+    left: 1rem;
+    max-width: fit-content;
+    color: #727272;
+  }
+
+  &-text {
+    height: 2rem;
+    min-width: auto;
+    text-align: left;
+    align-items: flex-start;
+    display: flex;
+    padding: 0 1rem;
+    margin: 0;
+  }
+
+  .-animated {
+    background: #fff;
+    color: #000;
+    top: 0.5rem;
+    padding: 0 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  &--error {
+    font-size: .8rem;
+    color: red;
+  }
+}

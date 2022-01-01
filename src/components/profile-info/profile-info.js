@@ -1,7 +1,7 @@
 import React from "react";
 import "./profile-info.scss";
 
-const ProfileInfo = ({}) => {
+const ProfileInfo = () => {
   return (
     <div className="rzv-profile-info">
       <ul className="rzv-profile-info__wr">

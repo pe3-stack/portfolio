@@ -1,4 +1,5 @@
 import React from "react";
+import { Link  } from "react-router-dom";
 import Logo from "../../atoms/logo/logo";
 import Weather from "../weather/weather";
 import "./navbar.scss";
@@ -7,10 +8,13 @@ const Navbar = ({city, icon, temp}) => {
     return (
         <div className="mp-navbar">
             <div className="mp-navbar__wrapper">
-                <Logo>Razvan</Logo>
+                <Link className="mp-logo__link" to="/market">
+                    <Logo>Razvan</Logo>
+                </Link>
+                
                 <div className="mp-weather">
                 <div className="mp-weather__container">
-                    <Weather city={city} icon={icon} temp={temp} />
+                    {city ? <Weather city={city} icon={icon} temp={temp} /> : null}
                 </div>
                 </div>
             </div>

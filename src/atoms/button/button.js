@@ -1,15 +1,23 @@
-import React, {useRef} from "react";
+import React, {useState, useRef} from "react";
 
 import './button.scss'
 
 
-const Button = ({href, children}) => {
+const Button = ({href, children, type, form, submitForm, value, dark}) => {
+
+const [isDark] = useState(dark);
 
    
 const rzvCta = useRef();
-   
     return (
-        <a className="rzv-a-cta" href={href} target="_blank" rel="noreferrer" ref={rzvCta}>{children}</a>
+        <button 
+        className={`rzv-a-cta ${isDark ? 'rzv-a-cta--dark' : ''}`} 
+        href={href} target="_blank" rel="noreferrer"
+        type={type}
+        value={value}
+        form={form}
+        onSubmit={submitForm}
+        ref={rzvCta}>{children}</button>
    )
 }
 

@@ -10,7 +10,7 @@
   &-item {
     
     &:not(:last-of-type) {
-      border-bottom: 1px solid #a1a1a1;
+      border-bottom: 1px solid #e9e9e9;
     }
 
     &__wrapper {
@@ -49,6 +49,10 @@
       
       &:hover {
         color: #000;
+        .rzv-accordion-item {
+          border-bottom: 1px solid #000;
+        }
+    
       }
     }
     

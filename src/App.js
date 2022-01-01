@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useEffect } from "react";
-
+import { Router, Route } from "react-router-dom";
+import history from "./history";
 
 import SideDrawer from "./components/navbar/navbar";
 import Navbar from "./components/navbar/navbar";
-import Modal from "./components/modal/modal";
-import Main from "./containers/Main/main";
 
-import SignUp from "./components/Authentication/SignUp/sign-up";
+
+import Main from "./containers/Main/main";
+// Market
+import Market from "./containers/market/market";
 
 import "./App.css";
 
@@ -16,7 +18,7 @@ import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 
-//import {  getExperience } from "./redux/reducers/experienceSlice";
+// import {  getExperience } from "./redux/reducers/experienceSlice";
 import { getWeather } from "./redux/reducers/weatherSlice";
 
 library.add(fab, faCheckSquare, faCoffee);
@@ -32,26 +34,22 @@ const App = () => {
   const weather = useSelector((state) => state.weather);
 
   useEffect(() => {
-    let userLocation = [];
+    let userLocation;
 
     const options = {
       enableHighAccuracy: true,
       maximumAge: 0,
     };
     const geoSuccess = (position) => {
-      userLocation = [position.coords.latitude, position.coords.longitude];
-      console.log("geolocation available");
-
-      dispatch(getWeather(userLocation));
+     userLocation = [position.coords.latitude, position.coords.longitude];
+   //dispatch(getWeather(userLocation));
     };
     const geoError = (error) => {
-      console.log("geolocation unavailable");
+     console.log("geolocation unavailable");
       return error.message;
     };
 
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
-
-    //dispatch(getExperience());
   }, [dispatch]);
 
   let sideDrawer;
@@ -72,21 +70,22 @@ const App = () => {
     city = weather.data.timezone.slice(7);
   }
 
+  
   return (
     <div className="App">
-      <Navbar
-        onToggleClick={toggleSideDrawer}
-        icon={wth_icon}
-        temp={(curr_temp - 273.15).toFixed(0)}
-        city={city}
-      />
-      {sideDrawer}
+      <Router history={history}>
+        <Navbar
+          onToggleClick={toggleSideDrawer}
+          icon={wth_icon}
+          temp={(curr_temp - 273.15).toFixed(0)}
+          city={city}
+        />
+        {sideDrawer}
 
-      <Main />
+        <Route path="/" component={Main} exact />
+        <Route path="/market" component={Market} />
 
-      <Modal>
-        <SignUp/>
-      </Modal>
+      </Router>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Icon = ({ name, color, size }) => (
 );
 
 Icon.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.number
 };
