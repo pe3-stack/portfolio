@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./input-text.scss";
 
@@ -6,12 +6,20 @@ const Input = React.forwardRef(({ change, val, label, type }, ref) => {
 
 let [isAnimated, setIsAnimated] = useState(false);
 
+useEffect(() => {
+  if (ref.current.value) {
+    console.log(ref.current)
+    ref.current.previousElementSibling.classList.add("-animated");
+  }
+}, [setIsAnimated])
+
 const onAnimate = (e) => {
-    if(!isAnimated) {
-       e.target.previousElementSibling.classList.add("-animated");
-       setIsAnimated(true);
-    }
+  if(!isAnimated) {
+     e.target.previousElementSibling.classList.add("-animated");
+     setIsAnimated(true);
+  }
 }
+
 
 const onResetAnimate = (e) => {
     if(isAnimated && e.target.value === '') {
@@ -19,6 +27,7 @@ const onResetAnimate = (e) => {
         setIsAnimated(false);
      }
 } 
+
 
   return (
     <div className="rzv-input">

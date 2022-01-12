@@ -11,8 +11,20 @@
     flex-direction: column;
     justify-content: center;
 
+    
+
     @media (min-width: 46em) {
       border-top: 1px solid #000;
+    }
+  }
+
+  &-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 7%;
+    input[type="number"] {
+      max-width: 7rem;
     }
   }
 
