@@ -1,8 +1,8 @@
 .rzv-image {
-  padding: 20px 0 0 30px;
   box-sizing: border-box;
   background-clip: content-box;
   border-radius: 49.9%;
+
 
   img {
     width: 100px;
@@ -17,7 +17,7 @@
 
     @media (min-width: 46em) {
       width: 125px;
-    height: 125px;
+      height: 125px;
     }
   }
 }

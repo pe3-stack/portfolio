@@ -5,7 +5,6 @@ import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
 import {
-  fetchProducts,
   productAdd,
 } from "../../../redux/reducers/products/productSlice";
 
@@ -13,26 +12,19 @@ import "./add-product.scss";
 
 const ProductAdd = ({ toggleAddProd }) => {
   const nameRef = React.useRef();
-  const integerRef = React.useRef();
-  const centsRef = React.useRef();
+  const priceRef = React.useRef();
   // const user_status = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
 
-  const [product, setProduct] = useState({ name: "", price: {
-    integer: 0,
-    cents: 0
-  } });
+  const [product, setProduct] = useState({ name: "", price: 0 });
 
   useEffect(() => {});
 
   const handleChange = (evt) => {
     setProduct({
       name: nameRef.current.value,
-      price: {
-        integer: integerRef.current.value,
-        cents: centsRef.current.value
-      },
+      price: priceRef.current.value,
     });
   };
 
@@ -40,7 +32,7 @@ const ProductAdd = ({ toggleAddProd }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(productAdd(product));
-    dispatch(fetchProducts());
+    console.log(product)
   };
 
 
@@ -61,17 +53,10 @@ const ProductAdd = ({ toggleAddProd }) => {
 
         <div className="rzv-product-add-price">
         <Input
-          ref={integerRef}
+          ref={priceRef}
           change={handleChange}
-          val={product.price.integer}
-          label="Integer"
-          type="number"
-        />
-        <Input
-          ref={centsRef}
-          change={handleChange}
-          val={product.price.cents}
-          label="Cents"
+          val={product.price}
+          label="Price"
           type="number"
         />
         </div>

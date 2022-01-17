@@ -3,11 +3,12 @@ import {
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 import axios from "axios";
+import {config} from 'dotenv'
 
 export const getExperience = createAsyncThunk(
     'experience/getExperience',
     async () => {
-        const response = await axios.get("http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info");  //http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info
+        const response = await axios.get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/info`);
         return response.data;
     }
 );

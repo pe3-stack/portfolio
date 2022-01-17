@@ -19,10 +19,13 @@
     padding: 10px 0 0 0;
     width: 100%;
     &__text {
+      display: flex;
+      flex-direction: row;
       margin: 0 1rem 0 0;
       text-align: left;
       font-size: 1rem;
       font-weight: 500;
+
     }
   }
 }

@@ -1,6 +1,6 @@
 
 
-.mp-main {
+.rzv-main {
   &__wrapper {
     padding: 3rem 0 0 0;
     display: flex;
@@ -22,10 +22,13 @@
     flex-direction: column;
     height: auto;
     z-index: 1;
+    padding: calc(100% / 10) calc(100% / 10);
+   
 
     @media (min-width: 48em) {
       height: 100vh;
       background-color: transparent;
+      padding:calc(100% / 22) 0 0 0;
     }
 
     ul {
@@ -35,24 +38,23 @@
       text-align: left;
       margin: 0;
       min-height: 350px;
-      padding: 2rem 2rem 1rem 2rem;
       width: auto;
       z-index: 5;
       justify-content: space-between;
+      padding: 0;
 
       @media (min-width: 46em) {
         position: fixed;
         height: 90%;
       }
+
       @media (min-width: 64em) {
-       
-        padding:4rem 2rem 1rem 2rem;
         width: calc(100% /3.5);
         height: 85%;
         justify-content: space-between;
       }
 
-      .mp-main_item {
+      .rzv-main_item {
         display: flex;
         flex-direction: column;
         margin: 0 0 2rem 0;
@@ -61,24 +63,29 @@
           border-bottom: 1px solid #fff;
           padding-bottom: 6px;
           width: max-content;
+          margin-top: 0;
         }
 
-        .rzv-a-cta {
-          color: #fff;
-
-           @media (min-width: 90em) {
-            width: 50%;
-           }
-
-          &:hover {
-            color: #000;
-          }
-        }
+        
 
         a {
           color: grey;
           text-decoration: none;
           margin-top: 20px;
+
+          .rzv-a-cta {
+            color: #fff;
+            width: 100%;
+            font-size: 1rem;
+
+             @media (min-width: 90em) {
+              width: 50%;
+             }
+  
+            &:hover {
+              color: #000;
+            }
+          }
         }
       }
 
@@ -87,32 +94,34 @@
   // White side on left
   &__right {
     display: flex;
-    flex-basis: 60%;
     flex-direction: column;
-    padding: 2rem calc(100% / 12);
-
+    padding: calc(100% / 10) calc(100% / 10);
+    @media (min-width: 46em) {
+      flex-basis: 45%;
+      padding: calc(100% / 22) calc(100% / 8) 0 0;
+    }
   }
 
   &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    @media (min-width: 48em) {
-      padding-right: 4rem;
+    
+    @media (min-width: 46em) {
+      justify-content: flex-start;
+      gap: 15%;
     }
 
     &_title {
       text-align: left;
 
       @media (min-width: 48em) {
-        flex-basis: 50%;
         text-align: left;
-
       }
-    }
-    &_image {
-      flex-basis: 50%;
+
+      .mpa-title {
+        padding-top: 0;
+      }
     }
   }
 

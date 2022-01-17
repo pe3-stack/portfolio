@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import {Link} from 'react-router-dom'
+
 import "./main.scss";
 
 import Title from "../../atoms/title/title";
@@ -99,15 +101,15 @@ function Main() {
   // contact - info
   let contact_info = contact.profiles.map((c, idx) => {
     return (
-      <div key={idx} className="mp-main__header">
-        <div className="mp-main__header_title">
+      <div key={idx} className="rzv-main__header">
+        <div className="rzv-main__header_title">
           <Title>{c.profile.name}</Title>
           <Paragraph color="lightgrey">{c.profile.job}</Paragraph>
           <ProfileInfo />
          
            </div>
           
-           <div className="mp-main__header_image">
+           <div className="rzv-main__header_image">
             <Image src={c.profile.image} />
           </div>
       </div>
@@ -115,14 +117,14 @@ function Main() {
   });
 
   return (
-    <div className="mp-main">
+    <div className="rzv-main">
       {/* {isMobile ? <FloatCTA /> : null} */}
 
-      <div className="mp-main__wrapper">
+      <div className="rzv-main__wrapper">
         <CanvasParticle />
-        <div className="mp-main__left">
+        <div className="rzv-main__left">
           <ul>
-            <li className="mp-main_item">
+            <li className="rzv-main_item">
               <h2>{t("Contact")}</h2>
               <p>pe3.gavrila@gmail.com</p>
               <a href="https://www.linkedin.com/in/razvan-gavrila-02780413b">
@@ -132,17 +134,17 @@ function Main() {
               </a>
             </li>
 
-            <li className="mp-main_item">
-              <Button href="http://localhost:8080/files/1638627991282-icon-CV-Razvan-Gavrila.pdf">
-                Download CV
-              </Button>
+            <li className="rzv-main_item">
+            <a target="_blank" href="https://api.razvan-gavrila.com/files/1642082884903-icon-razvan-cv.pdf">
+              <Button>Show CV</Button>
+              </a>
             </li>
           </ul>
         </div>
 
-        <div className="mp-main__right">
+        <div className="rzv-main__right">
           {contact_info}
-          <div className="mp-main__body">
+          <div className="rzv-main__body">
             <Info />
             {accordion}
           </div>

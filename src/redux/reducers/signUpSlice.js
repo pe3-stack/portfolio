@@ -6,7 +6,7 @@ export const signUp = createAsyncThunk(
   async (user) => {
     return axios
       .post(
-        "http://localhost:8080/api/users",
+        `${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/users`,
         {
           name: user.name,
           email: user.email,

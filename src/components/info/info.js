@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 import "./info.scss";
 
 const Info = () => {
@@ -11,7 +9,7 @@ const Info = () => {
       <div className="mp-info__wrapper">
         <div className="mp-info__items">
             <div className="mp-info-item">   
-                <div className="mp-info-item__text">Developing web applications with great passion and enthusiasm :)</div>
+                <div className="mp-info-item__text">Developing web applications with great passion and enthusiasm  :)</div>
             </div>      
         </div>
       </div>

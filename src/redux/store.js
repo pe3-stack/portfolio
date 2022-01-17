@@ -14,7 +14,7 @@ import weatherSlice from './reducers/weatherSlice'
     experience: experienceSlice,
     weather: weatherSlice
   },
-  devTools: process.env.NODE_ENV !== 'production'
+  devTools: true,
 })
 
 export default store;

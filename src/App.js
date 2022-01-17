@@ -42,10 +42,10 @@ const App = () => {
     };
     const geoSuccess = (position) => {
      userLocation = [position.coords.latitude, position.coords.longitude];
-   //dispatch(getWeather(userLocation));
+    // dispatch(getWeather(userLocation));
     };
     const geoError = (error) => {
-     console.log("geolocation unavailable");
+      console.log("geolocation unavailable");
       return error.message;
     };
 

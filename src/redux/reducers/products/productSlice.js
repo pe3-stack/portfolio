@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (product) => {
+  async () => {
     return axios
-      .get("http://localhost:8080/api/products")
-      .then((response) => {
-        return response.data;
+      .get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products`)
+      .then((res) => {
+        return res.data;
       })
       .catch((err) => {
         throw err;
@@ -19,12 +19,10 @@ export const productAdd = createAsyncThunk(
   "products/addProduct",
   async (product) => {
     return axios
-      .post("http://localhost:8080/api/products/add", {
+      .post(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/add`, {
+        isBuy: false,
         name: product.name,
-        price: {
-          integer: product.price.integer,
-          cents: product.price.cents
-        }
+        price: product.price
       })
       .then((response) => {
         return response.data;
@@ -39,9 +37,9 @@ export const productDelete = createAsyncThunk(
   "products/deleteProduct",
   async (_id) => {
     return axios
-      .delete(`http://localhost:8080/api/products/delete/${_id}`)
-      .then((response) => {
-        return response.data;
+      .delete(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/delete/${_id}`)
+      .then((res) => {
+        return res.data;
       })
       .catch((err) => {
         throw err;
@@ -51,12 +49,30 @@ export const productDelete = createAsyncThunk(
 
 export const productEdit = createAsyncThunk(
   "products/editProduct",
-  async ({ _id, name, price }) => {
+  async ({ _id, isBuy, name, price }) => {
     return axios
-      .put(`http://localhost:8080/api/products/edit/${_id}`, {
-        id: _id,
+      .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${_id}`, {
+        _id: _id,
+        isBuy: isBuy,
         name: name,
         price: price,
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+);
+
+export const productBuy = createAsyncThunk(
+  "products/buyProduct",
+  async ({ _id, isBuy}) => {
+    return axios
+      .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${_id}`, {
+        _id: _id,
+        isBuy: !isBuy
       })
       .then((response) => {
         return response.data;
@@ -71,109 +87,58 @@ export const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    tot: {
-      integer: 0,
-      cents: 0
-    },
+    tot: 0,
     error: "",
     loading: "",
   },
   reducers: {},
   extraReducers: {
-    [fetchProducts.pending]: (state) => {
-      state.products = [];
-      state.loading = "loading";
-    },
     [fetchProducts.fulfilled]: (state, { payload }) => {
       let priceArr = [];
-      let integerArr = [];
-      let centsArr = [];
-
       payload.forEach(p => {
-        priceArr.push(p);
+        priceArr.push(p.price);
       })
-
-     priceArr.forEach(x => {
-       if(x.price) {
-        integerArr.push(x.price.integer);
-        centsArr.push(x.price.cents);
-       }
-     })
-     
-     state.tot = {
-        integer: integerArr.reduce((a, b) => a + b, 0),
-        cents: centsArr.reduce((a, b) => a + b, 0)  
-      };
-
-      state.products = payload;
+      state.tot = priceArr.reduce((a, b) => a + b, 0);
+      state.products = [...payload];
       state.loading = "loaded";
-    },
-    [fetchProducts.rejected]: (state, action) => {
-      state.loading = "error";
-      state.error = action.error;
-    },
-    [productAdd.pending]: (state) => {
-      state.products = [];
-      state.loading = "loading";
     },
     [productAdd.fulfilled]: (state, { payload }) => {
-      state.products = state.products.concat(payload);
-      state.loading = "loaded";
+      const currState = current(state);
 
-      let priceArr = [];
-      let integerArr = [];
-      let centsArr = [];
-
-      state.products.forEach(p => {
-        priceArr.push(p);
-      })
-
-     priceArr.forEach(x => {
-       if(x.price) {
-        integerArr.push(x.price.integer);
-        centsArr.push(x.price.cents);
-       }
-     })
-     
-     state.tot = {
-        integer: integerArr.reduce((a, b) => a + b, 0),
-        cents: centsArr.reduce((a, b) => a + b, 0)  
-      };
-    },
-    [productAdd.rejected]: (state, action) => {
-      state.loading = "error";
-      state.error = action.error;
-    },
-    [productDelete.pending]: (state) => {
-      state.products = [];
-      state.loading = "loading";
+      state = [
+        ...state.products,
+        state.products.push(payload),
+        state.tot = currState.tot + payload.price
+      ]
+      state.loading = "loaded";      
     },
     [productDelete.fulfilled]: (state, { payload }) => {
-      state.products = state.products.filter(
-        (prod) => payload._id !== prod._id
-      );
+     
+      const currState = current(state);
+
+      state.products = state.products.filter( (prod) => prod._id !== payload._id)
+      state.tot = currState.tot - payload.price;
+
       state.loading = "loaded";
-    },
-    [productDelete.rejected]: (state, action) => {
-      state.loading = "error";
-      state.error = action.error;
-    },
-    [productEdit.pending]: (state) => {
-      state.products = [];
-      state.loading = "loading";
     },
     [productEdit.fulfilled]: (state, { payload }) => {
-      const newProducts = state.products.filter(
-        (prod) => payload.id !== prod._id
-      );
-      newProducts.push(payload);
-      state.products = newProducts;
+      const index = state.products.findIndex(product => product._id === payload._id);
+      state.products[index] = {
+        ...state.products[index],
+        ...payload,
+      };
+
       state.loading = "loaded";
+
     },
-    [productEdit.rejected]: (state, action) => {
-      state.loading = "error";
-      state.error = action.error;
-    },
+    [productBuy.fulfilled]: (state, { payload }) => {
+      const index = state.products.findIndex(product => product._id === payload._id);
+      state.products[index] = {
+        ...state.products[index],
+        ...payload,
+      };
+      state.loading = "loaded";
+    }
   },
 });
 

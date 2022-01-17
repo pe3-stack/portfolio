@@ -6,7 +6,7 @@ export const signIn = createAsyncThunk(
   async (user) => {
     return axios
       .post(
-        "http://localhost:8080/api/users/login",
+        `${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/users/login`,
         {
           email: user.email,
           password: user.pw
