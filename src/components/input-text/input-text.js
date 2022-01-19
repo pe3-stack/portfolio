@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./input-text.scss";
 
-const Input = React.forwardRef(({ change, val, label, type }, ref) => {
+const Input = React.forwardRef(({ change, onKeyUp, val, label, type }, ref) => {
 
 let [isAnimated, setIsAnimated] = useState(false);
 
@@ -40,6 +40,7 @@ const onResetAnimate = (e) => {
         onFocus={(e) => onAnimate(e)}
         onBlur={(e) => onResetAnimate(e)}
         onChange={change}
+        onKeyUp={onKeyUp}
         ref={ref}
       />
       {/* <div className="rzv-input--error">Please check your {label}</div> */}

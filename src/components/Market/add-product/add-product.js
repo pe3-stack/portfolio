@@ -5,7 +5,7 @@ import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
 import {
-  productAdd,
+  addProductAsync,
 } from "../../../redux/reducers/products/productSlice";
 
 import "./add-product.scss";
@@ -16,8 +16,7 @@ const ProductAdd = ({ toggleAddProd }) => {
   // const user_status = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-
-  const [product, setProduct] = useState({ name: "", price: 0 });
+  const [product, setProduct] = useState({ name: "", price: 0, completed: false });
 
   useEffect(() => {});
 
@@ -25,14 +24,13 @@ const ProductAdd = ({ toggleAddProd }) => {
     setProduct({
       name: nameRef.current.value,
       price: priceRef.current.value,
+      completed: false
     });
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productAdd(product));
-    console.log(product)
+    dispatch(addProductAsync(product));
   };
 
 
@@ -40,7 +38,7 @@ const ProductAdd = ({ toggleAddProd }) => {
     <div className="rzv-product-add">
       <form
         className="rzv-product-add-form"
-        id="productAdd"
+        id="addProduct"
         onSubmit={handleSubmit}
       >
         <Input
@@ -65,7 +63,7 @@ const ProductAdd = ({ toggleAddProd }) => {
             color="dark"
             type="submit"
             value="Submit"
-            form="productAdd"
+            form="addProduct"
             submitForm={handleSubmit}
           >
             Add

@@ -23,8 +23,16 @@
       align-items: center;
       .rzv-a-cta {
         min-width: 10rem;
-       
+        &:disabled {
+          background: #dddddd;
+          &:hover{
+            border: none;
+            color: white;
+          }
+        }
+        
       }
+   
       a {
           text-decoration: none;
           margin-left: 1rem;

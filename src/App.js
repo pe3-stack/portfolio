@@ -42,7 +42,11 @@ const App = () => {
     };
     const geoSuccess = (position) => {
      userLocation = [position.coords.latitude, position.coords.longitude];
-    // dispatch(getWeather(userLocation));
+     //dispatch(getWeather(userLocation));
+     setInterval(() => {
+      //dispatch(getWeather(userLocation));
+     }, 30 * 60 * 1000 )
+     
     };
     const geoError = (error) => {
       console.log("geolocation unavailable");

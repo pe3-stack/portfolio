@@ -9,13 +9,10 @@ const ProfileInfo = () => {
           <p>Date of Birth: </p>
           <p>17/06/1994</p>
         </li>
-        <li className="rzv-profile-info__item">
-          <p>Nationality: </p>
-          <p>Romanian</p>
-        </li>
+       
         <li className="rzv-profile-info__item">
           <p>Gender: </p>
-          <p>Male</p>
+          <p>M</p>
         </li>
       </ul>
     </div>

@@ -3,14 +3,15 @@ import React, {useState, useRef} from "react";
 import './button.scss'
 
 
-const Button = ({href, children, type, form, submitForm, click, value, color}) => {
+const Button = ({href, children, type, form, submitForm, click, value, color, disabled}) => {
 
 
 const rzvCta = useRef();
 
 
     return (
-        <button 
+        <button
+        disabled={disabled}
         className={`rzv-a-cta ${color ? `rzv-a-cta--${color}` : ''}`} 
         href={href ? href : null} target="_blank" rel="noreferrer"
         type={type}
@@ -18,7 +19,9 @@ const rzvCta = useRef();
         form={form}
         onSubmit={submitForm}
         onClick={click}
-        ref={rzvCta}>{children}</button>
+        ref={rzvCta}>{children}
+        </button>
+        
    )
 }
 

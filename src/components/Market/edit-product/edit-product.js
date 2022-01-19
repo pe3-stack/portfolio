@@ -6,15 +6,19 @@ import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
 import {
-  fetchProducts,
-  productEdit,
+  getProductsAsync,
+  editProductAsync,
 } from "../../../redux/reducers/products/productSlice";
 
 import "./edit-product.scss";
+import { prettyDOM } from "@testing-library/react";
 
 const EditProduct = ({ toggleEditProd, product }) => {
   const nameRef = React.useRef();
   const priceRef = React.useRef();
+
+  const [newProdName, setNewProdName] = useState(nameRef);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -26,6 +30,17 @@ const EditProduct = ({ toggleEditProd, product }) => {
   });
 
   const handleChange = (e) => {
+    setNewProdName(e.target.value);
+
+    console.log(product.name)
+    console.log(e.target.value)
+
+    if(product.name != e.target.value) {
+      setBtnDisabled(false);
+    } else {
+      setBtnDisabled(true)
+    }
+    
     setProd({
       _id: product._id,
       name: nameRef.current.value,
@@ -36,10 +51,8 @@ const EditProduct = ({ toggleEditProd, product }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productEdit(prod));
-    setTimeout(() => {
-      dispatch(fetchProducts());
-    },300)
+    dispatch(editProductAsync(prod));
+    
   };
 
   return (
@@ -69,8 +82,9 @@ const EditProduct = ({ toggleEditProd, product }) => {
             value="Submit"
             form="productEdit"
             click={handleSubmit}
+            disabled={newProdName && !btnDisabled ? false : true}
           >
-            Edit
+            {newProdName ? 'Save' : 'Edit'}
           </Button>
           <a href="#" onClick={toggleEditProd}>
             Cancel

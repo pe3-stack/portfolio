@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
+export const getProductsAsync = createAsyncThunk(
+  "products/getProductsAsync",
   async () => {
     return axios
       .get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products`)
@@ -15,14 +15,14 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-export const productAdd = createAsyncThunk(
-  "products/addProduct",
-  async (product) => {
+export const addProductAsync = createAsyncThunk(
+  "products/addProductAsync",
+  async (payload) => {
     return axios
       .post(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/add`, {
-        isBuy: false,
-        name: product.name,
-        price: product.price
+        name: payload.name,
+        price: payload.price,
+        completed: payload.completed
       })
       .then((response) => {
         return response.data;
@@ -33,11 +33,13 @@ export const productAdd = createAsyncThunk(
   }
 );
 
-export const productDelete = createAsyncThunk(
+export const deleteProductAsync = createAsyncThunk(
   "products/deleteProduct",
-  async (_id) => {
+  async (payload) => {
     return axios
-      .delete(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/delete/${_id}`)
+      .delete(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/delete/${payload._id}`, {
+        _id: payload._id
+      })
       .then((res) => {
         return res.data;
       })
@@ -47,13 +49,13 @@ export const productDelete = createAsyncThunk(
   }
 );
 
-export const productEdit = createAsyncThunk(
-  "products/editProduct",
-  async ({ _id, isBuy, name, price }) => {
+export const editProductAsync = createAsyncThunk(
+  "products/editProductAsync",
+  async ({ _id, completed, name, price }) => {
     return axios
       .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${_id}`, {
         _id: _id,
-        isBuy: isBuy,
+        completed: completed,
         name: name,
         price: price,
       })
@@ -66,13 +68,12 @@ export const productEdit = createAsyncThunk(
   }
 );
 
-export const productBuy = createAsyncThunk(
-  "products/buyProduct",
-  async ({ _id, isBuy}) => {
+export const toggleCompleteAsync = createAsyncThunk(
+  "products/toggleCompleteAsync",
+  async (playload) => {
     return axios
-      .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${_id}`, {
-        _id: _id,
-        isBuy: !isBuy
+      .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${playload._id}`, {
+        completed: !playload.completed
       })
       .then((response) => {
         return response.data;
@@ -91,54 +92,69 @@ export const productSlice = createSlice({
     error: "",
     loading: "",
   },
-  reducers: {},
-  extraReducers: {
-    [fetchProducts.fulfilled]: (state, { payload }) => {
-      let priceArr = [];
-      payload.forEach(p => {
-        priceArr.push(p.price);
-      })
-      state.tot = priceArr.reduce((a, b) => a + b, 0);
-      state.products = [...payload];
-      state.loading = "loaded";
+  reducers: {
+    getProducts: (state, {payload}) => {
+      state.products=payload;
     },
-    [productAdd.fulfilled]: (state, { payload }) => {
-      const currState = current(state);
+    addProduct: (state, { payload }) => {
+      const newProd = {
+        name: payload.name,
+        price: payload.price,
+        completed: false 
+      }
 
-      state = [
-        ...state.products,
-        state.products.push(payload),
-        state.tot = currState.tot + payload.price
-      ]
-      state.loading = "loaded";      
+      state.products.push(newProd);
     },
-    [productDelete.fulfilled]: (state, { payload }) => {
-     
-      const currState = current(state);
-
-      state.products = state.products.filter( (prod) => prod._id !== payload._id)
-      state.tot = currState.tot - payload.price;
-
-      state.loading = "loaded";
-    },
-    [productEdit.fulfilled]: (state, { payload }) => {
-      const index = state.products.findIndex(product => product._id === payload._id);
+    editProduct: (state, { payload }) => {
+      const index = state.products.findIndex(product => product._id === payload._id);  
       state.products[index] = {
         ...state.products[index],
         ...payload,
       };
-
-      state.loading = "loaded";
-
     },
-    [productBuy.fulfilled]: (state, { payload }) => {
+    completeProduct: (state, { payload }) => {
       const index = state.products.findIndex(product => product._id === payload._id);
-      state.products[index] = {
-        ...state.products[index],
-        ...payload,
-      };
-      state.loading = "loaded";
+      state[index].completed = payload.completed;
+    },
+    deleteProduct: (state, {payload}) => {
+      state.products = state.products.filter(product => product._id !== payload._id);
     }
+  },
+  extraReducers: {
+    [getProductsAsync.pending]: (state, { payload }) => {
+      state.loading='loading';
+      state.products=[];
+    },
+    [getProductsAsync.fulfilled]: (state, { payload }) => {
+      state.loading='loaded';
+      state.products=payload;
+    },
+    [addProductAsync.pending]: (state, { payload }) => {
+      state.loading='loading';
+    },
+    [addProductAsync.fulfilled]: (state, { payload }) => {
+      state.loading='loaded';
+      state.products.push(payload);
+    },
+    [toggleCompleteAsync.fulfilled]: (state, { payload }) => {
+      state.loading='loaded';
+      const index = state.products.findIndex((product) => product._id === payload._id)
+      state.products[index].completed = payload.completed;
+    },
+    [deleteProductAsync.fulfilled]: (state, { payload }) => {
+      state.loading='loaded';
+      state.products = state.products.filter((product) => product._id !== payload._id);
+    },
+    [editProductAsync.fulfilled]: (state, { payload }) => {
+      state.loading='loaded';
+      const index = state.products.findIndex(product => product._id === payload._id);  
+      state.products[index] = {
+        ...state.products[index],
+        ...payload,
+      };
+    }
+
+    
   },
 });
 
