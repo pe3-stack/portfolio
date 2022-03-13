@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
 
+
   &-label {
     position: relative;
     top: 1.8rem;
@@ -15,7 +16,7 @@
 
   &-text {
     height: 2rem;
-    min-width: auto;
+    min-width: 14rem;
     text-align: left;
     align-items: flex-start;
     display: flex;

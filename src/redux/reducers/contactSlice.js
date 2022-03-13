@@ -16,6 +16,8 @@ import {
   
   // ACCORDION EXPERIENCE
   const contactSlice = createSlice({
+
+    
       name: "contact",
       initialState: {
         profiles: [],

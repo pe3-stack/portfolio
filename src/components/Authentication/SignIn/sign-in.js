@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link  } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../../atoms/title/title";
 import Button from "../../../atoms/button/button";
@@ -14,13 +14,13 @@ const SignIn = ({ click }) => {
   const emailRef = React.useRef();
   const pwRef = React.useRef();
 
-  // const user_status = useSelector((state) => state.user);
+  
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({ email: "", pw: "" });
 
   useEffect(() => {
-  
+    
   })
 
   const handleChange = (evt) => {
@@ -33,7 +33,7 @@ const SignIn = ({ click }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(user));
-    
+
     document.querySelector('[js-auth-modal]').classList.remove('-opened');
   };
 
@@ -65,7 +65,7 @@ const SignIn = ({ click }) => {
             form="signIn"
             submitForm={handleSubmit}
             >Login</Button>
-          <Link className="rzv-switch-cta" to="#" onClick={click}>SignUp</Link>
+          {/* <Link className="rzv-switch-cta" to="#" onClick={click}>SignUp</Link> */}
            </div>
       </form>
    </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {Link} from 'react-router-dom'
@@ -9,8 +9,11 @@ import Title from "../../atoms/title/title";
 import Paragraph from "../../atoms/paragraph/paragraph";
 import Image from "../../atoms/image/image";
 import Button from "../../atoms/button/button";
+import Legals from "../../components/legals/legals";
 import Info from "../../components/info/info";
 import ProfileInfo from "../../components/profile-info/profile-info";
+import Flag from '../../components/Flag/Flag';
+import Heart from '../../components/Heart/Heart';
 
 import CanvasParticle from "../../atoms/canvas/canvas";
 
@@ -47,7 +50,9 @@ i18n
   });
 
 function Main() {
-  const dispatch = useDispatch();
+  
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch(); 
 
   let lang = document.querySelector("html").lang;
   
@@ -66,14 +71,16 @@ function Main() {
   };
 
   useEffect(() => {
-
     dispatch(getContact());
     dispatch(getExperience());
     handleWindowResize();
 
+    console.log(theme)
     window.onresize = () => {
       handleWindowResize();
     };
+
+
   }, [dispatch]);
 
   let accordion =
@@ -101,53 +108,66 @@ function Main() {
   // contact - info
   let contact_info = contact.profiles.map((c, idx) => {
     return (
-      <div key={idx} className="rzv-main__header">
+      <Fragment key={idx}>
+      <div className="rzv-main__header">
         <div className="rzv-main__header_title">
-          <Title>{c.profile.name}</Title>
+          <Title animate={true}>{c.profile.name}</Title>
           <Paragraph color="lightgrey">{c.profile.job}</Paragraph>
           <ProfileInfo />
-         
            </div>
           
            <div className="rzv-main__header_image">
-            <Image src={c.profile.image} />
+            <Image src={c.profile.image} animate={true}/>
           </div>
       </div>
+      <div className="rzv-main__body">
+            <Info>{c.profile.desc}</Info>
+            {accordion}
+          </div>
+      </Fragment>
+      
     );
   });
-
+;
   return (
     <div className="rzv-main">
       {/* {isMobile ? <FloatCTA /> : null} */}
 
-      <div className="rzv-main__wrapper">
-        <CanvasParticle />
+      <div className="rzv-main__wrapper" style={{ height: '100%', backgroundColor: theme.style.background, color: theme.style.color } }>
+        
         <div className="rzv-main__left">
           <ul>
             <li className="rzv-main_item">
               <h2>{t("Contact")}</h2>
+              <p>+39 3319439323</p>
               <p>pe3.gavrila@gmail.com</p>
               <a href="https://www.linkedin.com/in/razvan-gavrila-02780413b">
-                https://www.linkedin.com /in/
+                https://www.linkedin.com/in/
                 <br />
                 razvan-gavrila-02780413b
               </a>
+              
+             
             </li>
 
-            <li className="rzv-main_item">
-            <a target="_blank" href="https://api.razvan-gavrila.com/files/1642082884903-icon-razvan-cv.pdf">
-              <Button>Show CV</Button>
+            <li className="rzv-main_item rzv-main_item__footer">
+            
+              <a target="_blank" href="https://api.razvan-gavrila.com/files/1646038638166-icon-cv-razvan-gavrila.pdf">
+                <Button>Show CV</Button>
               </a>
+                
+              <div className='rzv-main__partners'>
+                <Heart />
+                <Flag/>
+              </div>
+
             </li>
           </ul>
+          <CanvasParticle />
         </div>
 
         <div className="rzv-main__right">
-          {contact_info}
-          <div className="rzv-main__body">
-            <Info />
-            {accordion}
-          </div>
+          {contact_info}    
         </div>
       </div>
     </div>

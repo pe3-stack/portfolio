@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 /* product controllers */
 import EditProduct from "../../components/Market/edit-product/edit-product";
@@ -18,17 +18,20 @@ const Market = () => {
   const [addProduct, setAddProduct] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [editProduct, setEditProduct] = useState(false);
+  
+  const theme = useSelector((state) => state.theme);
+
+  const [ style, setStyle ] = useState(theme.style);
 
   const switchAuth = () => {
     setIsRegistered(!isRegistered);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { setStyle(theme.style) }, []);
 
   const toggleEditProduct = () => {
     setEditProduct(!editProduct);
   };
-
 
   const toggleAddProduct = ((e) => {
     setAddProduct(!addProduct);
@@ -37,7 +40,8 @@ const Market = () => {
   return (
     <div className="rzv-market">
       <div className="rzv-market__wr">
-        {user.isAuth || localStorage.getItem('token') ? <ProductList toggleAddProd={toggleAddProduct} toggleEditProd={toggleEditProduct} editProduct={editProduct}/> : ""}
+        {user.isAuth || localStorage.getItem('token') ? 
+        <ProductList style={theme.style} toggleAddProd={toggleAddProduct} toggleEditProd={toggleEditProduct} editProduct={editProduct}/> : ""}
 
         {addProduct ? <AddProduct toggleAddProd={toggleAddProduct}/> : null}
       </div>

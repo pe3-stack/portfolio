@@ -1,23 +1,40 @@
 .rzv-image {
   box-sizing: border-box;
-  background-clip: content-box;
   border-radius: 49.9%;
+  opacity: 1;
+  
 
-
-  img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-
-    filter: grayscale(5);
-
-    &:hover {
-      filter: none;
-    }
-
-    @media (min-width: 46em) {
-      width: 125px;
-      height: 125px;
-    }
+  &.-animate {
+    animation-name: animateImage;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
   }
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+  
+      filter: grayscale(5);
+  
+      &:hover {
+        filter: none;
+      }
+  
+      @media (min-width: 46em) {
+        width: 125px;
+        height: 125px;
+      }
+    }
+
+
 }
+
+
+// @keyframes animateImage{
+//   0% { opacity: 0; transform: translateX(300px) rotate(360deg)}
+//   25% { opacity: 1; transform: translateX(0px)}
+//   75% { opacity: 1; transform: translateX(0px)}
+//   100% {opacity: 1; transform: translateX(0px)}
+// }

@@ -3,7 +3,7 @@
 
     &__wr {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: space-around;
 
         @media (min-width: 64em) {

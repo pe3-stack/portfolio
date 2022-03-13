@@ -4,7 +4,6 @@ import {
   } from "@reduxjs/toolkit";
   import axios from "axios";
   
-
   export const getWeather = createAsyncThunk(
     "weather/getWeather",
     async (userLoc) => {

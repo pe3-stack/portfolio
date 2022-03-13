@@ -6,7 +6,6 @@ import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
 import {
-  getProductsAsync,
   editProductAsync,
 } from "../../../redux/reducers/products/productSlice";
 
@@ -26,14 +25,15 @@ const EditProduct = ({ toggleEditProd, product }) => {
     _id: product._id,
     isBuy: product.isBuy,
     name: product.name,
-    price: product.price,
+    inserted: product.inserted,
+    modified: product.modified,
+    price: product.price
   });
+
+  
 
   const handleChange = (e) => {
     setNewProdName(e.target.value);
-
-    console.log(product.name)
-    console.log(e.target.value)
 
     if(product.name != e.target.value) {
       setBtnDisabled(false);
@@ -45,14 +45,16 @@ const EditProduct = ({ toggleEditProd, product }) => {
       _id: product._id,
       name: nameRef.current.value,
       isBuy: product.isBuy,
-      price: priceRef.current.value
+      price: priceRef.current.value,
+      modified: new Date()
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editProductAsync(prod));
-    
+    setBtnDisabled(true);
+    console.log(product);
   };
 
   return (

@@ -1,6 +1,7 @@
 .rzv-product-list {
   //padding: 0 calc(100% / 8) 0 calc(100% / 8);
   width: 100%;
+  background: transparent;
   @media (min-width: 64em) {
     min-width: 40rem;
     width: calc(100% / 2);
@@ -34,6 +35,7 @@
     }
     
   }
+
   &__wr {
     max-height: 30rem;
     overflow-y: scroll;
@@ -60,4 +62,5 @@
       background: rgb(141, 141, 141);
     }
   }
+  
 }

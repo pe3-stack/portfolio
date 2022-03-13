@@ -13,10 +13,16 @@ import "./add-product.scss";
 const ProductAdd = ({ toggleAddProd }) => {
   const nameRef = React.useRef();
   const priceRef = React.useRef();
-  // const user_status = useSelector((state) => state.user);
+  
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState({ name: "", price: 0, completed: false });
+  const [product, setProduct] = useState({ 
+    name: "", 
+    price: 0, 
+    completed: false,
+    inserted: undefined,
+    modified: undefined
+  });
 
   useEffect(() => {});
 
@@ -24,6 +30,8 @@ const ProductAdd = ({ toggleAddProd }) => {
     setProduct({
       name: nameRef.current.value,
       price: priceRef.current.value,
+      inserted: new Date(),
+      modified: new Date(),
       completed: false
     });
   };

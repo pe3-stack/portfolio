@@ -5,10 +5,12 @@ import history from "./history";
 import SideDrawer from "./components/navbar/navbar";
 import Navbar from "./components/navbar/navbar";
 
+import Modal from "./components/modal/modal";
+import SignIn from "./components/Authentication/SignIn/sign-in";
 
 import Main from "./containers/Main/main";
-// Market
 import Market from "./containers/market/market";
+import Gallery from "./containers/Gallery/Gallery";
 
 import "./App.css";
 
@@ -20,34 +22,43 @@ import { useSelector, useDispatch } from "react-redux";
 
 // import {  getExperience } from "./redux/reducers/experienceSlice";
 import { getWeather } from "./redux/reducers/weatherSlice";
+import { toggleTheme } from "./redux/reducers/theme/themeSlice";
 
 library.add(fab, faCheckSquare, faCoffee);
 
 const App = () => {
+  const user = useSelector((state) => state.user);
   const [showSideDrawer, setShowSideDrawer] = useState(false);
-  const toggleSideDrawer = useCallback(() => {
-    setShowSideDrawer((value) => !value);
-  }, [setShowSideDrawer]);
+  const toggleSideDrawer = useCallback(() => { setShowSideDrawer((value) => !value); }, [setShowSideDrawer]);
 
   const dispatch = useDispatch();
 
   const weather = useSelector((state) => state.weather);
+  const theme = useSelector((state) => state.theme);
+  
+  const [ style, setStyle ] = useState(theme.style);
 
   useEffect(() => {
+    dispatch( toggleTheme() );
+    setStyle(theme.style);
+
+    console.log(style);
     let userLocation;
+    localStorage.setItem("token", "");
 
     const options = {
       enableHighAccuracy: true,
       maximumAge: 0,
     };
+
     const geoSuccess = (position) => {
-     userLocation = [position.coords.latitude, position.coords.longitude];
-     //dispatch(getWeather(userLocation));
-     setInterval(() => {
-      //dispatch(getWeather(userLocation));
-     }, 30 * 60 * 1000 )
-     
+      userLocation = [position.coords.latitude, position.coords.longitude];
+      dispatch(getWeather(userLocation));
+      setInterval(() => {
+        dispatch(getWeather(userLocation));
+      }, 30 * 60 * 1000);
     };
+
     const geoError = (error) => {
       console.log("geolocation unavailable");
       return error.message;
@@ -67,28 +78,34 @@ const App = () => {
     );
   }
 
-  let curr_temp, wth_icon, city;
-  if (weather.data.current !== undefined) {
-    wth_icon = weather.data.current.weather[0].icon;
+  let curr_temp, weather_icon, curr_city;
+  if (weather.data.current && weather.data.current !== undefined) {
+    weather_icon = weather.data.current.weather[0].icon;
     curr_temp = weather.data.current.temp;
-    city = weather.data.timezone.slice(7);
+    curr_city = weather.data.timezone.slice(7);
   }
 
-  
   return (
-    <div className="App">
+    <div className="App" style={{ background: theme.style.background, color: theme.style.color, height: '100vh' }}>
       <Router history={history}>
         <Navbar
           onToggleClick={toggleSideDrawer}
-          icon={wth_icon}
+          icon={weather_icon}
           temp={(curr_temp - 273.15).toFixed(0)}
-          city={city}
+          city={curr_city}
         />
         {sideDrawer}
-
         <Route path="/" component={Main} exact />
-        <Route path="/market" component={Market} />
+        {/* {user.isAuth ? (
+          <Route path="/" component={Main} exact />
+        ) : (
+          <Modal status={user.isAuth}>
+            <SignIn />
+          </Modal>
+        )} */}
 
+        <Route path="/market" component={Market} />
+        <Route path="/gallery" component={Gallery} />
       </Router>
     </div>
   );
