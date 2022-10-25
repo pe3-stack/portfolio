@@ -1,4 +1,4 @@
-let upload = require('./routes/upload');
+
 let Grid = require('gridfs-stream')
 let express = require('express');
 let mongoose = require('mongoose');
@@ -20,9 +20,10 @@ app.use(function (req, res, next) {
 
 app.use(helmet());
 
-
 //Import Routes
-const infoRoute = require('./routes/infos');
+const upload = require('./routes/upload');
+const infoRoute = require('./routes/infoRoutes');
+const contactRoute = require('./routes/contactRoutes');
 // Welcome message
 app.get('/', (req, res) => res.send('Welcome to Express'));
 
@@ -32,8 +33,9 @@ app.listen(port, function() {
 });
 
 //app.use('/posts', postsRoute);
-app.use('/info', infoRoute);
+app.use("/info", infoRoute);
 app.use("/files", upload);
+app.use("/contact", contactRoute);
 
 //connect to mongoose
 const conn = mongoose.connection;

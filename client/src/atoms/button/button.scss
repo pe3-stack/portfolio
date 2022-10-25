@@ -1,11 +1,14 @@
+@import "../../assets/styles/colors.scss";
+
 .rzv-a {
     &-cta {
-        padding: .5rem 2rem;
+        padding: .5rem;
         color: #fff;
-        border: 1px solid #fff;
+        border: 1px solid #ffffff;
         border-radius: 2px;
+        font-weight: 400;
         text-align: center;
-        background: #000;
+        background: transparent;
         text-decoration: none;
         cursor: pointer;
 
@@ -14,5 +17,25 @@
           border: 1px solid #000;
           color: #000;
         }
-    }
+        
+        &--dark {
+          background-color: #000;
+          color: #fff;
+        }
+
+        &--red {
+          background-color: #a70000;
+        }
+
+         &[disabled] {
+           cursor: auto;
+           border: none;
+           
+         }
+      
+    } 
+
+    
+
+
 }

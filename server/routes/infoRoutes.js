@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const Infos = require("../models/infos");
+const Info = require("../models/infos");
 
 
 // get info
 router.get('/',function(req,res,next){
-  Infos.find({}).then(function(info){
+  Info.find({}).then(function(info){
       res.send(info);
   }).catch(next);
 });
 
 // post info
 router.post("/", (req, res) => {
-  const info = new Infos({
+  const info = new Contact({
    name: req.body.name,
    role: req.body.role
  });

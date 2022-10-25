@@ -3,13 +3,25 @@ import React, {useRef} from "react";
 import './button.scss'
 
 
-const Button = ({href, children}) => {
+const Button = ({href, children, type, form, submitForm, click, value, color, disabled}) => {
 
-   
+
 const rzvCta = useRef();
-   
+
+
     return (
-        <a className="rzv-a-cta" href={href} target="_blank" rel="noreferrer" ref={rzvCta}>{children}</a>
+        <button
+        disabled={disabled}
+        className={`rzv-a-cta ${color ? `rzv-a-cta--${color}` : ''}`} 
+        href={href ? href : null} target="_blank" rel="noreferrer"
+        type={type}
+        value={value}
+        form={form}
+        onSubmit={submitForm}
+        onClick={click}
+        ref={rzvCta}>{children}
+        </button>
+        
    )
 }
 

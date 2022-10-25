@@ -1,1 +1,0 @@
-DB_CONNECTION = mongodb+srv://pe3:jackdaniels7@cluster0.mwmnf.mongodb.net/portfolio?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true

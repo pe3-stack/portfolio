@@ -7,7 +7,7 @@ import axios from "axios";
 export const getExperience = createAsyncThunk(
     'experience/getExperience',
     async () => {
-        const response = await axios.get("http://localhost:8080/info");
+        const response = await axios.get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/info`);
         return response.data;
     }
 );

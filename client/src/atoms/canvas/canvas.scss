@@ -1,8 +1,14 @@
-.tsparticles-canvas-el {
+#tsparticles {
     display: none;
     @media (min-width: 46em) {
         display: block;
-        width: calc(100vw / 3) !important;
-    }   
+    } 
+
+    canvas {
+        width: 100%;
+        height: 20rem !important;
+        bottom: 0 !important;
+        top: auto !important;
+    }
 
 }

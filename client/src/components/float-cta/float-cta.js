@@ -6,8 +6,6 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const FloatCTA = () => {
   let [isVisible, setIsVisible] = useState(true);
-  let [coords, setCoords] = useState({});
-
   
   useEffect(() => {
     window.onscroll = () => {
@@ -17,11 +15,9 @@ const FloatCTA = () => {
  
   const floating = () => {  
     console.log();
-    let heightToHideFrom = 450;
+    let heightToHideFrom = 250;
     const winScroll = document.body.scrollTop || 
         document.documentElement.scrollTop;
-
-
 
     if (winScroll >= heightToHideFrom) { 
        isVisible &&      // to limit setting state only the first time         
@@ -30,7 +26,6 @@ const FloatCTA = () => {
          setIsVisible(true);
     }  
   };
-
 
 
   return (
