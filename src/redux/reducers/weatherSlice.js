@@ -4,10 +4,11 @@ import {
   } from "@reduxjs/toolkit";
   import axios from "axios";
   
+
   export const getWeather = createAsyncThunk(
     "weather/getWeather",
     async (userLoc) => {
-      //console.log(userLoc)
+      console.log(userLoc)
          const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc[0]}&lon=${userLoc[1]}&exclude=minutely,hourly,daily&appid=0fb8990744a3d0ca16b1ecd17a7df8d7`);
          return response.data;
     }

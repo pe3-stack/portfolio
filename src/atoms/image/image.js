@@ -2,10 +2,9 @@ import React from "react";
 
 import './image.scss'
 
-const Image = ({src, width, height, animate}) => {
+const Image = ({src, width, height}) => {
     return (
-    <div className={`rzv-image `}> 
-    {/* ${animate ? '-animate' : ''} */}
+    <div className="mp-a-image">
         <img src={src} width={width} height={height} alt=""/>
     </div>)
 }
