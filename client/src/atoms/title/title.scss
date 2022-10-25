@@ -1,7 +1,29 @@
 .mpa-title {
-    padding: 2rem 0 0.5rem;
+    padding: 1rem 0 0rem;
+    
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         margin: 0;
+
+        @media (min-width: 46rem) {
+            font-size: 1.6rem;
+        }
     }
+
+    
 }
+
+.-animate {
+    animation-name: text-translate;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes text-translate{
+    0% { opacity: 0; transform: translateX(-300px);  }
+    25% { opacity: 1; transform: translateX(0px);  }
+    75% { opacity: 1; transform: translateX(0);  }
+    100% {opacity: 1; transform: translateX(0);  }
+  }

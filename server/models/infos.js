@@ -10,6 +10,6 @@ const InfoSchema = new Schema({
     }
 })
 
-const Student = mongoose.model('Infos', InfoSchema);
+const Info = mongoose.model('Infos', InfoSchema);
 
-module.exports = Student;
+module.exports = Info;

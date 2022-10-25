@@ -1,10 +1,19 @@
-.mp-a-paragraph {
-    padding: 0 1rem 1rem;
+@import "../../assets/styles/colors.scss";
+
+.rzv-atm-paragraph {
     font-size: 1rem;
     p {
         margin: 0;
     }
+    &--white {
+        color: $clr-white;
+    }
     &--lightgrey {
-        color: #adadad;
+        color: $clr-lightgrey;
+    }
+    &--small {
+        p {
+            font-size: 1rem;
+        }
     }
 }

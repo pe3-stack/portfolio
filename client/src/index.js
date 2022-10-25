@@ -8,6 +8,9 @@ import store from './redux/store'
 import {configureStore} from '@reduxjs/toolkit'
 import reducer from './redux/reducers/experienceSlice'
 
+
+/****************/
+
 export default function configureAppStore(preloadedState) {
   const store = configureStore({
     reducer: reducer,

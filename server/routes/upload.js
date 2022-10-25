@@ -1,7 +1,7 @@
-const upload = require("../middleware/upload");
-const express = require("express");
-const router = express.Router();
-
+require('dotenv').config();
+const upload = require("../controllers/upload"),
+ express = require("express"),
+ router = express.Router();
 
 //@route GET /
 //@desc Display all files 
@@ -16,7 +16,7 @@ router.get('/',(req, res) => {
     })
 });
 
-//@route GET /image>filename
+//@route GET /image:filename
 //@desc Display Image 
 router.get('/:filename',(req, res) => {
     gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
@@ -26,9 +26,13 @@ router.get('/:filename',(req, res) => {
             })
         }
 
-        if(file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-            const readstream = gfs.createReadStream(file.filename);
-            readstream.pipe(res);
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'application/pdf') {
+            res.setHeader('Content-Type', file.contentType);
+            res.setHeader('Content-Length', file.length);
+            
+            const readStream = gridFSBucket.openDownloadStream(file._id);
+            readStream.pipe(res);
+            
         } else {
             res.status(404).json({
                 err: "Not an image"
@@ -37,13 +41,12 @@ router.get('/:filename',(req, res) => {
     })
 });
 
-
 //@route POST /
 //@desc Insert a file 
 router.post("/upload", upload.single("file"), (req ,res) => {
-    if(req.file === undefined) return res.send("you must select a file")
-    const imgUrl = `http://localhost:8080/files/${req.file.filename}`;
-    return res.send(imgUrl)
+    if(req.file === undefined) return res.send("you must select a file");
+    const imgUrl = `${process.env.URL}/files/${req.file.filename}`;
+    return res.send(imgUrl);
 })
 
 module.exports = router;

@@ -2,22 +2,34 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pe3-stack/node-js.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pe3-stack/node-js/issues"
+  },
+  "homepage": "https://github.com/pe3-stack/node-js#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
     "gridfs-stream": "^1.1.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.4",
-    "multer": "^1.4.3",
-    "multer-gridfs-storage": "^5.0.2",
-    "nodemon": "^2.0.14"
+    "mongoose": "^6.1.1",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0"
   }
 }

@@ -7,10 +7,10 @@ import axios from "axios";
 export const getExperience = createAsyncThunk(
     'experience/getExperience',
     async () => {
-        const response = await axios.get("http://localhost:8080/info");
+        const response = await axios.get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/info`);
         return response.data;
     }
-)
+);
 
 // ACCORDION EXPERIENCE
 const experienceSlice = createSlice({
@@ -35,7 +35,7 @@ const experienceSlice = createSlice({
         state.error = action.error.message;
       }
     },
-  });
+});
   
 
   export default experienceSlice.reducer;

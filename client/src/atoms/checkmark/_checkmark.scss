@@ -1,0 +1,19 @@
+.raz-checkmark {
+    display: inline-block;
+    transform: rotate(45deg);
+    margin-top: 5px;
+    height: 10px;
+    width: 5px;
+    border-bottom: 4px solid white;
+    border-right: 4px solid white;
+    
+    &-wr {
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        background: rgb(1, 134, 1);
+        padding: 2px;
+    }
+
+  }
+  
