@@ -8,7 +8,11 @@ export const getExperience = createAsyncThunk(
     'experience/getExperience',
     async () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         const response = await axios.get("http://localhost:8080/info");
+=======
+        const response = await axios.get("http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info");  //http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
         const response = await axios.get("http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info");  //http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info
 >>>>>>> parent of b4dc514 (massiv update after products release)

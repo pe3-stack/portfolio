@@ -6,8 +6,11 @@ import Input from "../../input-text/input-text";
 
 import {
 <<<<<<< HEAD
+<<<<<<< HEAD
   addProductAsync,
 =======
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
   fetchProducts,
   productAdd,
 >>>>>>> parent of b4dc514 (massiv update after products release)
@@ -30,6 +33,9 @@ const ProductAdd = ({ toggleAddProd }) => {
     integer: 0,
     cents: 0
   } });
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
 
   useEffect(() => {});
@@ -38,13 +44,19 @@ const ProductAdd = ({ toggleAddProd }) => {
     setProduct({
       name: nameRef.current.value,
 <<<<<<< HEAD
+<<<<<<< HEAD
       price: priceRef.current.value,
       completed: false
 =======
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
       price: {
         integer: integerRef.current.value,
         cents: centsRef.current.value
       },
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
     });
   };
@@ -56,6 +68,9 @@ const ProductAdd = ({ toggleAddProd }) => {
 =======
     dispatch(productAdd(product));
     dispatch(fetchProducts());
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
   };
 

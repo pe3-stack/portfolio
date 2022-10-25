@@ -6,10 +6,14 @@ import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {
   getProductsAsync,
   editProductAsync,
 } from "../../../redux/reducers/products/productSlice";
+=======
+import { fetchProducts, productEdit } from "../../../redux/reducers/products/productSlice";
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
 import { fetchProducts, productEdit } from "../../../redux/reducers/products/productSlice";
 >>>>>>> parent of b4dc514 (massiv update after products release)
@@ -19,9 +23,12 @@ import { prettyDOM } from "@testing-library/react";
 
 const EditProduct = ({ toggleEditProd, product }) => {
   const nameRef = React.useRef();
+<<<<<<< HEAD
 
   const [newProdName, setNewProdName] = useState(nameRef);
   const [btnDisabled, setBtnDisabled] = useState(true);
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
 
   const dispatch = useDispatch();
 
@@ -31,6 +38,7 @@ const EditProduct = ({ toggleEditProd, product }) => {
   });
 
   const handleChange = (e) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     setNewProdName(e.target.value);
 
@@ -50,10 +58,15 @@ const EditProduct = ({ toggleEditProd, product }) => {
       price: priceRef.current.value
     });
 =======
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
       setProd({
         _id: product._id,
         name: e.target.value,
       });
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
   };
 
@@ -65,6 +78,9 @@ const EditProduct = ({ toggleEditProd, product }) => {
 =======
     dispatch(productEdit(prod));
     dispatch(fetchProducts());
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
   };
 
@@ -89,11 +105,19 @@ const EditProduct = ({ toggleEditProd, product }) => {
             form="productEdit"
             click={handleSubmit}
 <<<<<<< HEAD
+<<<<<<< HEAD
             disabled={newProdName && !btnDisabled ? false : true}
           >
             {newProdName ? 'Save' : 'Edit'}
           </Button>
           <a href="#" onClick={toggleEditProd}>
+=======
+          >Edit</Button>
+          <a
+          href="#"
+            onClick={toggleEditProd}
+          >
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
           >Edit</Button>
           <a

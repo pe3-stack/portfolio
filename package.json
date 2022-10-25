@@ -8,10 +8,14 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@fortawesome/react-fontawesome": "^0.1.15",
 =======
     "@fortawesome/react-fontawesome": "^0.1.16",
 >>>>>>> parent of a52bb13 (massive update)
+=======
+    "@fortawesome/react-fontawesome": "^0.1.15",
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
     "@fortawesome/react-fontawesome": "^0.1.15",
 >>>>>>> parent of b4dc514 (massiv update after products release)
@@ -22,9 +26,12 @@
     "axios": "^0.22.0",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "dotenv": "^11.0.0",
     "dotenv-webpack": "^7.0.3",
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
 >>>>>>> parent of b4dc514 (massiv update after products release)
     "i18next": "^21.6.0",

@@ -7,6 +7,9 @@ import {
 =======
   fetchProducts,
   productDelete,
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
 } from "../../../redux/reducers/products/productSlice";
 
@@ -20,6 +23,9 @@ const ProductList = ({ toggleAddProd, toggleEditProd, editProduct }) => {
 =======
   const market = useSelector((state) => state.products);
   const [currProduct, setCurrProduct] = useState({});
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
 
   const [currentProduct, setCurrProduct] = useState({});
@@ -46,6 +52,7 @@ const ProductList = ({ toggleAddProd, toggleEditProd, editProduct }) => {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   return (
     <div className="rzv-product-list">
@@ -59,6 +66,11 @@ const ProductList = ({ toggleAddProd, toggleEditProd, editProduct }) => {
   return (
     <div className="rzv-product-list">
       <div className="rzv-product-list__header">
+=======
+  return (
+    <div className="rzv-product-list">
+      <div className="rzv-product-list__header">
+>>>>>>> parent of b4dc514 (massiv update after products release)
         <div className="rzv-product-item__price">
           {market.tot ? (
             <div className="rzv-product-item__price-wr">
@@ -67,6 +79,9 @@ const ProductList = ({ toggleAddProd, toggleEditProd, editProduct }) => {
               </span>
               <span className="rzv-product-item__price--cents">
                 ,{(Math.round(market.tot.cents * 10) / 100).toFixed(0)} $
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
               </span>
             </div>
@@ -85,7 +100,10 @@ const ProductList = ({ toggleAddProd, toggleEditProd, editProduct }) => {
               completed={completed}
               product={prod}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
               click={() => {
                 handleDelete(prod._id);
               }}

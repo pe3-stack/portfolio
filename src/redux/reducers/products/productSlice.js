@@ -9,6 +9,9 @@ export const getProductsAsync = createAsyncThunk(
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (product) => {
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
     return axios
       .get("http://localhost:8080/api/products")
@@ -26,17 +29,23 @@ export const addProductAsync = createAsyncThunk(
   async (payload) => {
     return axios
 <<<<<<< HEAD
+<<<<<<< HEAD
       .post(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/add`, {
         name: payload.name,
         price: payload.price,
         completed: payload.completed
 =======
+=======
+>>>>>>> parent of b4dc514 (massiv update after products release)
       .post("http://localhost:8080/api/products/add", {
         name: product.name,
         price: {
           integer: product.price.integer,
           cents: product.price.cents
         }
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
       })
       .then((response) => {
@@ -53,11 +62,17 @@ export const deleteProductAsync = createAsyncThunk(
   async (payload) => {
     return axios
 <<<<<<< HEAD
+<<<<<<< HEAD
       .delete(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/delete/${payload._id}`, {
         _id: payload._id
       })
       .then((res) => {
         return res.data;
+=======
+      .delete(`http://localhost:8080/api/products/delete/${_id}`)
+      .then((response) => {
+        return response.data;
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
       .delete(`http://localhost:8080/api/products/delete/${_id}`)
       .then((response) => {
@@ -70,6 +85,7 @@ export const deleteProductAsync = createAsyncThunk(
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export const editProductAsync = createAsyncThunk(
   "products/editProductAsync",
@@ -97,6 +113,17 @@ export const toggleCompleteAsync = createAsyncThunk(
       .put(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/products/edit/${playload._id}`, {
         completed: !playload.completed
       })
+=======
+export const productEdit = createAsyncThunk(
+  "products/editProduct",
+  async ({ _id, name, price }) => {
+    return axios
+      .put(`http://localhost:8080/api/products/edit/${_id}`, {
+        id: _id,
+        name: name,
+        price: price,
+      })
+>>>>>>> parent of b4dc514 (massiv update after products release)
 =======
 export const productEdit = createAsyncThunk(
   "products/editProduct",
@@ -289,6 +316,9 @@ export const productSlice = createSlice({
       state.loading = "error";
       state.error = action.error;
     },
+<<<<<<< HEAD
+>>>>>>> parent of b4dc514 (massiv update after products release)
+=======
 >>>>>>> parent of b4dc514 (massiv update after products release)
   },
 });
