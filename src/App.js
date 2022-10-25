@@ -71,6 +71,7 @@ const App = () => {
       
 =======
      userLocation = [position.coords.latitude, position.coords.longitude];
+<<<<<<< HEAD
      //dispatch(getWeather(userLocation));
      setInterval(() => {
       //dispatch(getWeather(userLocation));
@@ -80,6 +81,12 @@ const App = () => {
     };
     const geoError = (error) => {
       console.log('geolocation unavailable')
+=======
+   //dispatch(getWeather(userLocation));
+    };
+    const geoError = (error) => {
+     console.log("geolocation unavailable");
+>>>>>>> parent of b4dc514 (massiv update after products release)
       return error.message;
     };
     

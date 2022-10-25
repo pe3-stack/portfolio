@@ -14,6 +14,7 @@ const Info = () => {
       <div className="mp-info__wrapper">
         <div className="mp-info__items">
             <div className="mp-info-item">   
+<<<<<<< HEAD
                 <div className="mp-info-item__text">kajsdhka</div>
                 <div className="mp-info__is">sssss</div>
             </div>
@@ -30,6 +31,9 @@ const Info = () => {
         <div className="rzv-info__items">
             <div className="rzv-info-item">   
                 <div className="rzv-info-item__text">Developing web applications with great passion and enthusiasm  :)</div>
+=======
+                <div className="mp-info-item__text">Developing web applications with great passion and enthusiasm :)</div>
+>>>>>>> parent of b4dc514 (massiv update after products release)
             </div>      
 >>>>>>> parent of a52bb13 (massive update)
         </div>

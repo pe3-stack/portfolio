@@ -6,7 +6,7 @@
         flex-direction: column-reverse;
         justify-content: space-around;
 
-        @media (min-width: 64em) {
+        @media (min-width: 46em) {
             flex-direction: row;
         }
     }

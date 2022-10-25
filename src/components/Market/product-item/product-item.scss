@@ -1,8 +1,5 @@
 .rzv-product-item {
   padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #cecece;
-
   &__wr {
     align-items: center;
     display: flex;
@@ -15,63 +12,49 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      height: auto;
-      width: auto; 
   }
 
   &__name {
-      margin-left: 1rem;
-      font-size: 1rem;
+      margin-left: 2rem;
+      font-size: 1.4rem;
       font-weight: 600;
       text-transform: capitalize;
-      @media (min-width: 46em) {
-        margin-left: 2rem;
-        font-size: 1.4rem;
-      }
+
   }
   &__price {
-    font-size: 1rem;
-    font-weight: 600;
-    @media (min-width: 46em) {
-      font-size: 1.2rem;
-    }
+    font-size: 1.4rem;
+    font-weight: 500;
+
     &-wr {
         display: flex;
         align-items: center;
 
         .rzv-product-item__price--integer {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
         }
   
         .rzv-product-item__price--cents {
-            font-size: 1rem;
+            font-size: 0.6rem;
             font-weight: 700;
             position: relative;
             bottom: 5px;
-            margin-left: .2rem;
         }
         
     }
 
+    span {
+        font-size: 0.8rem;
+    }
 
     &--rounded {
-        cursor: pointer;
+        background: #ffd600;
         border: 2px solid #000;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 2rem;
+        min-width: 2.5rem;
         padding: 0.2rem;
-        &-color {
-          &-normal {
-            background: #ffd600;
-          }
-          &-buy {
-            background: #058d00;
-            color: #fff;
-          }
-        }
     }
   }
 
@@ -79,11 +62,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    button {
-      min-height: 1.5rem;
-      min-width: 1.5rem;
-      padding: 0.3rem;
-    }
     .rzv-a-cta--dark {
       margin: 0 0.5rem;
       a {
@@ -98,4 +76,6 @@
     }
   }
 
+  
+  
 }

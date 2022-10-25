@@ -1,0 +1,46 @@
+.rzv-product-add {
+  min-width: 20rem;
+  padding: 0 0 3rem 0;
+
+  @media (min-width: 46em) {
+    padding: 3rem 0;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    
+
+    @media (min-width: 46em) {
+      border-top: 1px solid #000;
+    }
+  }
+
+  &-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 7%;
+    input[type="number"] {
+      max-width: 7rem;
+    }
+  }
+
+  &__cta {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .rzv-a-cta {
+      min-width: 10rem;
+     
+    }
+    a {
+        text-decoration: none;
+        margin-left: 1rem;
+        color: #000;
+    }
+  }
+}

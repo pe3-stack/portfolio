@@ -13,7 +13,7 @@ const rzvCta = useRef();
         <button
         disabled={disabled}
         className={`rzv-a-cta ${color ? `rzv-a-cta--${color}` : ''}`} 
-        href={href ? href : null} target="_blank" rel="noreferrer"
+        href={href} target="_blank" rel="noreferrer"
         type={type}
         value={value}
         form={form}

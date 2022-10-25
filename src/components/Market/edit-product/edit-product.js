@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 import { useDispatch } from "react-redux";
 
 import Button from "../../../atoms/button/button";
 import Input from "../../input-text/input-text";
 
+<<<<<<< HEAD
 import {
   getProductsAsync,
   editProductAsync,
 } from "../../../redux/reducers/products/productSlice";
+=======
+import { fetchProducts, productEdit } from "../../../redux/reducers/products/productSlice";
+>>>>>>> parent of b4dc514 (massiv update after products release)
 
 import "./edit-product.scss";
 import { prettyDOM } from "@testing-library/react";
 
 const EditProduct = ({ toggleEditProd, product }) => {
   const nameRef = React.useRef();
-  const priceRef = React.useRef();
 
   const [newProdName, setNewProdName] = useState(nameRef);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -24,12 +27,11 @@ const EditProduct = ({ toggleEditProd, product }) => {
 
   const [prod, setProd] = useState({
     _id: product._id,
-    isBuy: product.isBuy,
     name: product.name,
-    price: product.price,
   });
 
   const handleChange = (e) => {
+<<<<<<< HEAD
     setNewProdName(e.target.value);
 
     console.log(product.name)
@@ -47,17 +49,31 @@ const EditProduct = ({ toggleEditProd, product }) => {
       isBuy: product.isBuy,
       price: priceRef.current.value
     });
+=======
+      setProd({
+        _id: product._id,
+        name: e.target.value,
+      });
+>>>>>>> parent of b4dc514 (massiv update after products release)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     dispatch(editProductAsync(prod));
     
+=======
+    dispatch(productEdit(prod));
+    dispatch(fetchProducts());
+>>>>>>> parent of b4dc514 (massiv update after products release)
   };
 
   return (
     <div className="rzv-product-edit">
-      <form className="rzv-product-edit-form" id="productEdit">
+      <form
+        className="rzv-product-edit-form"
+        id="productEdit"
+      >
         <Input
           ref={nameRef}
           label="name"
@@ -65,16 +81,6 @@ const EditProduct = ({ toggleEditProd, product }) => {
           val={prod.name}
           change={handleChange}
         />
-        <div className="rzv-product-add-price">
-          <Input
-            ref={priceRef}
-            change={handleChange}
-            val={prod.price}
-            label="Price"
-            type="number"
-          />
-        
-        </div>
         <div className="rzv-product-edit__cta">
           <Button
             color="dark"
@@ -82,11 +88,19 @@ const EditProduct = ({ toggleEditProd, product }) => {
             value="Submit"
             form="productEdit"
             click={handleSubmit}
+<<<<<<< HEAD
             disabled={newProdName && !btnDisabled ? false : true}
           >
             {newProdName ? 'Save' : 'Edit'}
           </Button>
           <a href="#" onClick={toggleEditProd}>
+=======
+          >Edit</Button>
+          <a
+          href="#"
+            onClick={toggleEditProd}
+          >
+>>>>>>> parent of b4dc514 (massiv update after products release)
             Cancel
           </a>
         </div>

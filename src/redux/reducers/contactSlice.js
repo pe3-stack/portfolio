@@ -3,15 +3,13 @@ import {
     createAsyncThunk,
   } from "@reduxjs/toolkit";
   import axios from "axios";
-  require('dotenv').config();
   
   export const getContact = createAsyncThunk(
       'contact/getContact',
       async () => {
-          const response = await axios.get(`${process.env.REACT_APP_API_KEY ? process.env.REACT_APP_API_KEY : ''}/contact`);
+          const response = await axios.get("http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/contact");  //http://nodejs-env.eba-quc3ihcv.us-east-2.elasticbeanstalk.com/info
           return response.data;
       }
-      
   );
   
   // ACCORDION EXPERIENCE
@@ -40,4 +38,4 @@ import {
   });
     
   
-  export default contactSlice.reducer;
+    export default contactSlice.reducer;

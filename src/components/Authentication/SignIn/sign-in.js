@@ -59,7 +59,7 @@ const SignIn = ({ click }) => {
           />
            <div className="rzv-sign-in__cta">
            <Button
-            color="dark"
+            dark
             type="submit"
             value="Submit"
             form="signIn"

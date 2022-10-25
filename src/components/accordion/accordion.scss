@@ -186,7 +186,10 @@
        h3 {
          font-size: 1.2rem;
          font-weight: 600;
-         margin: 0;     
+         margin: 0;
+         @media (min-width: 48em) {
+          font-size: 1.4rem;
+         }
 
        }
     }

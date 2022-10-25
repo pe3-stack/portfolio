@@ -1,13 +1,17 @@
 .rzv-product-list {
   //padding: 0 calc(100% / 8) 0 calc(100% / 8);
-  width: 100%;
+  @media (min-width: 46em) {
+    min-width: 25rem;
+  }
   @media (min-width: 64em) {
+    min-width: 30rem;
+  }
+  @media (min-width: 80em) {
     min-width: 40rem;
-    width: calc(100% / 2);
   }
 
   &__header {
-    min-height: 4rem;
+    min-height: 3rem;
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -22,14 +26,15 @@
       }
     }
 
-    .rzv-product-list__price {
+    .rzv-product-item__price {
       color: #fff;
-      font-weight: 700;
+
       &--integer {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
       &--cents {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin-left: .2rem;
       }
     }
     
@@ -61,3 +66,4 @@
     }
   }
 }
+

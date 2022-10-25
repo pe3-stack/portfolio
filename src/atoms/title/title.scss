@@ -3,6 +3,9 @@
     padding: 2rem 0 0.5rem;
 =======
     padding: 1rem 0 0rem;
+    @media (min-width: 46rem) {
+        padding: 1rem 0 0.5rem;
+    }
    
 >>>>>>> parent of a52bb13 (massive update)
     h1 {
