@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .mp-accordion {
   padding: 0 2rem 1rem;
   display: flex;
@@ -84,3 +85,183 @@
   visibility: visible;
 }
 
+=======
+.rzv-accordion {
+  padding: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  background-color: white;
+  list-style: none;
+
+  &-item {
+    
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      max-height: 0;
+      transition: all 0.5s;
+      opacity: 0;
+      visibility: hidden;
+      
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #a1a1a1;
+      }
+      
+      
+      &--text {
+        padding: 1rem 0;
+        &-small {
+          color: #666666;
+          font-size: 0.8rem;
+        }
+      }
+
+    }
+
+    &__title {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      font-weight: 600;
+      font-size: 1.2rem;
+      justify-content: space-between;
+      position: relative;
+      padding: 1rem 0 0rem 0;
+
+      
+      &:hover {
+        color: #000;
+        .rzv-accordion-item {
+          border-bottom: 1px solid #000;
+        }
+    
+      }
+    }
+    
+
+    &__icon {
+      padding: 0.5rem 2rem 1rem 0;
+
+      @media (min-width: 46em) {
+        padding: 0.5rem 2rem 0 0;
+      }
+
+      img {
+        width: 40px;
+        @media (min-width: 48em) {
+        width: 45px;
+        }
+
+      }
+
+    }
+    &__content {
+      display: flex;
+      flex-direction: row;
+      
+      @media (min-width: 48em) {
+        flex-direction: row;
+        width: 100%;
+      } 
+    }
+
+    &__job {  
+      display: flex;
+      flex-direction: column;
+      width: calc(100vw/4);
+      min-width: 50%;
+      padding-right: .5rem;
+
+      @media (min-width: 46em) {
+        flex-direction: row;
+        padding-right: 2rem;
+      }
+
+       h3 {
+         font-size: 1.2rem;
+         font-weight: 600;
+         margin: 0;     
+
+       }
+    }
+    &__footer {
+      padding: 2rem 0 3rem;
+      text-align: left;
+
+      @media (min-width: 46em) {
+        padding: 4rem 0 3rem;
+      }
+    }
+
+    &__skills {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-left: 1px solid black;
+      font-weight: 500;
+      list-style: none;
+      padding-left: 2rem;
+
+      @media (max-width: 360px) {
+        padding-left: calc(100% / 18);
+      }
+
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+    }
+
+    &__skill {
+      padding-bottom: 0.2rem;
+    }
+  }
+
+  &-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #4f4f4f;
+    opacity: 0.35;
+    span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+      width: 7rem;
+      color: #fff;
+      position: relative;
+    }
+    &--loading-data{
+      span {
+        background-color: #ea9700;
+      }
+    }
+    &--error-data {
+      span { 
+        background-color: #c20808;
+      }
+    }
+  }
+}
+
+.-expanded {
+  opacity: 1;
+  max-height: 50rem;
+  margin: 0 0 3rem 0;
+  visibility: visible;
+}
+
+>>>>>>> parent of a52bb13 (massive update)

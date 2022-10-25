@@ -1,0 +1,13 @@
+.rzv-market {
+    padding: 5rem 2rem 0rem 2rem;
+
+    &__wr {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+
+        @media (min-width: 64em) {
+            flex-direction: row;
+        }
+    }
+} 

@@ -6,12 +6,22 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+<<<<<<< HEAD
     "@fortawesome/react-fontawesome": "^0.1.15",
+=======
+    "@fortawesome/react-fontawesome": "^0.1.16",
+>>>>>>> parent of a52bb13 (massive update)
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.22.0",
+<<<<<<< HEAD
+=======
+    "dotenv": "^11.0.0",
+    "dotenv-webpack": "^7.0.3",
+    "i18next": "^21.6.0",
+>>>>>>> parent of a52bb13 (massive update)
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
