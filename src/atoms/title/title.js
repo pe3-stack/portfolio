@@ -2,9 +2,9 @@ import React from "react";
 
 import './title.scss'
 
-const Title = ({animate, children}) => {
+const Title = ({children}) => {
     return (
-    <div className={`mpa-title ${ animate ? '-animate' : '' }`}>
+    <div className="mpa-title">
         <h1>
             {children}
         </h1>

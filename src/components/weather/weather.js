@@ -11,7 +11,7 @@ import "./weather.scss";
 const Weather = ({ city, icon, temp }) => {
     return (
         <div className='mp-weather-item'>
-             <Icon name={icon} color="#FFFFFF" size={26} />
+             <Icon name={icon} color="#FFFFFF" size={24} />
              <Paragraph color="light">{city}</Paragraph>
              <div className="mp-weather-item__temp">
                  <span>{temp}°</span>
