@@ -1,0 +1,19 @@
+@import "../../assets/styles/colors.scss";
+
+.rzv-atm-paragraph {
+    font-size: 1rem;
+    p {
+        margin: 0;
+    }
+    &--white {
+        color: $clr-white;
+    }
+    &--lightgrey {
+        color: $clr-lightgrey;
+    }
+    &--small {
+        p {
+            font-size: 1rem;
+        }
+    }
+}

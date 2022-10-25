@@ -1,0 +1,11 @@
+#tsparticles {
+    display: none;
+    @media (min-width: 46em) {
+        display: block;
+    } 
+
+    canvas {
+        width: calc(100vw / 3) !important;
+    }
+
+}

@@ -1,0 +1,31 @@
+.ca-toggle-button {
+  display: flex;
+  height: 30px;
+  margin: 15px auto;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  box-sizing: border-box;
+  &:hover {
+    .toggle_button__line {
+      background-color: #bbb;
+    }
+  }
+}
+
+.toggle_button:focus {
+  outline: none;
+}
+
+.toggle_button__line {
+  width: 30px;
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+.toggle_button:hover > .toggle_button__line {
+  background-color: rgb(211, 211, 211);
+}

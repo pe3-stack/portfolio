@@ -1,0 +1,52 @@
+@import "../../assets/styles/colors.scss";
+
+.rzv-toggle-button {
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &-icon {
+        align-items: center;
+        display: flex;
+        margin: 0rem 0.5rem 0 0.5rem;
+    }
+
+    label {
+        display: block;
+        width: 30px;
+        height: 15px;
+        position: relative;
+        border: 2px solid white;
+        cursor: pointer;
+        bottom: 10px;
+        align-items: center;
+        transition: 0.5s;
+    
+      &::after {
+        content: "";
+        width: 10px;
+        height: 5px;
+        background-color: $clr-white;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        transition: 0.5s;
+      }
+    }
+}
+
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+
+
+input:checked + label {
+    &:after {
+        left: 90%;
+        transform: translateX(-100%);
+    }
+}
